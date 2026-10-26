@@ -1,0 +1,56 @@
+[
+  {
+    "file": "DB-Chapter1.md",
+    "sha256": "9d66dcdd4e7f19b131b77c01dcdff3f196c1bdad24f034a34847ede1968ab968",
+    "lines": 1504,
+    "characters": 80433
+  },
+  {
+    "file": "DB-Chapter2.md",
+    "sha256": "89adefdd5f6bff6378221b644eb2df0fbdd83ca4c78788eb7463fd6f8fed3e62",
+    "lines": 1535,
+    "characters": 79223
+  },
+  {
+    "file": "DB-Chapter3.md",
+    "sha256": "5b595e6f9e689a46bcbb3d2be7265e3de18e64437803688ce727b059ccad9c00",
+    "lines": 1487,
+    "characters": 73261
+  },
+  {
+    "file": "DB-Chapter4.md",
+    "sha256": "a9c0f4c4efaa5acfe56e47033c310207f212d97c4fc354d86bcb9b9919d9ab67",
+    "lines": 1604,
+    "characters": 70252
+  },
+  {
+    "file": "DB-Chapter5.md",
+    "sha256": "c5d4fae0153b5a5510d379c1c4afef91406a396385f623bb83e8a082e57d451b",
+    "lines": 1733,
+    "characters": 64470
+  },
+  {
+    "file": "DB-Chapter6.md",
+    "sha256": "9dfb3848a0d57563ec7de8c7622fb48d29e62221d644d901c469b71ccbbfc636",
+    "lines": 2477,
+    "characters": 94894
+  },
+  {
+    "file": "DB-Chapter7.md",
+    "sha256": "fa020ec3b976445636d7d0f915b76b8d684908f49ce643c21128da5ef0558885",
+    "lines": 1617,
+    "characters": 66479
+  },
+  {
+    "file": "DB-Chapter8.md",
+    "sha256": "9a7803d67c38370fc23906e555ff6cab49d5b3b5e804fe94e8896573438f6a05",
+    "lines": 1213,
+    "characters": 64501
+  },
+  {
+    "file": "DB-Final.md",
+    "sha256": "b090e53edbea2cb0eb84c18b8d482e9e2eb9cdf38cdd75b7d31ed1b9a38d1543",
+    "lines": 4978,
+    "characters": 240298
+  }
+]

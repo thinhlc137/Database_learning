@@ -1,0 +1,921 @@
+{
+  "sources": 9,
+  "source_lines": 18148,
+  "source_characters": 833811,
+  "source_sections": 164,
+  "learning_pages": 18,
+  "quiz_questions": 50,
+  "sql_exercises": 40,
+  "pages": [
+    {
+      "id": "c1-00",
+      "file": "materials/DB-Chapter1.md",
+      "title": "Chương 1: Khái niệm và Kiến trúc Hệ Cơ Sở Dữ Liệu — *Database System Concepts and Architecture*"
+    },
+    {
+      "id": "c1-01",
+      "file": "materials/DB-Chapter1.md",
+      "title": "0. Trước khi bắt đầu"
+    },
+    {
+      "id": "c1-02",
+      "file": "materials/DB-Chapter1.md",
+      "title": "1. File-based Approach và Database Approach"
+    },
+    {
+      "id": "c1-03",
+      "file": "materials/DB-Chapter1.md",
+      "title": "2. Three-Schema Architecture và Data Independence"
+    },
+    {
+      "id": "c1-04",
+      "file": "materials/DB-Chapter1.md",
+      "title": "3. Database Languages"
+    },
+    {
+      "id": "c1-05",
+      "file": "materials/DB-Chapter1.md",
+      "title": "4. Data Models, Database Schema và Database State"
+    },
+    {
+      "id": "c1-06",
+      "file": "materials/DB-Chapter1.md",
+      "title": "5. Data Management Systems Framework (NÂNG CAO)"
+    },
+    {
+      "id": "c1-07",
+      "file": "materials/DB-Chapter1.md",
+      "title": "6. Bảng Tổng Hợp Thuật Ngữ Chương 1"
+    },
+    {
+      "id": "c1-08",
+      "file": "materials/DB-Chapter1.md",
+      "title": "7. Tổng Kết — Những Điểm Khả Năng Cao Ra Thi"
+    },
+    {
+      "id": "c1-09",
+      "file": "materials/DB-Chapter1.md",
+      "title": "8. Bảng Tra Nhanh (Quick Reference)"
+    },
+    {
+      "id": "c1-10",
+      "file": "materials/DB-Chapter1.md",
+      "title": "9. Sai lầm thường gặp (Common Mistakes)"
+    },
+    {
+      "id": "c1-11",
+      "file": "materials/DB-Chapter1.md",
+      "title": "10. Bài tập tự luyện có lời giải"
+    },
+    {
+      "id": "c1-12",
+      "file": "materials/DB-Chapter1.md",
+      "title": "11. Câu Hỏi Ôn Tập (từ slide gốc)"
+    },
+    {
+      "id": "c1-13",
+      "file": "materials/DB-Chapter1.md",
+      "title": "12. Đáp án Tự kiểm tra"
+    },
+    {
+      "id": "c1-14",
+      "file": "materials/DB-Chapter1.md",
+      "title": "13. Mối Quan Hệ Với Các Chương Khác — Liên kết Lab/BTL"
+    },
+    {
+      "id": "c1-15",
+      "file": "materials/DB-Chapter1.md",
+      "title": "14. Phụ lục — Mapping 42 slide → Section trong tài liệu này"
+    },
+    {
+      "id": "c1-16",
+      "file": "materials/DB-Chapter1.md",
+      "title": "15. Bảng so sánh nguồn (Prompt 3 — audit table)"
+    },
+    {
+      "id": "c1-17",
+      "file": "materials/DB-Chapter1.md",
+      "title": "16. Checklist tổng hợp cuối cùng"
+    },
+    {
+      "id": "guide-1",
+      "file": "lessons/01-foundations.md",
+      "title": "Nền tảng & kiến trúc"
+    },
+    {
+      "id": "c2-00",
+      "file": "materials/DB-Chapter2.md",
+      "title": "Chương 2: Mô hình Thực thể–Mối liên kết — Entity-Relationship (ER) Model"
+    },
+    {
+      "id": "c2-01",
+      "file": "materials/DB-Chapter2.md",
+      "title": "0. Trước khi bắt đầu"
+    },
+    {
+      "id": "c2-02",
+      "file": "materials/DB-Chapter2.md",
+      "title": "1. Overview of Database Design Process — Tổng quan quy trình thiết kế CSDL"
+    },
+    {
+      "id": "c2-03",
+      "file": "materials/DB-Chapter2.md",
+      "title": "2. A Sample Database Application — CSDL mẫu COMPANY"
+    },
+    {
+      "id": "c2-04",
+      "file": "materials/DB-Chapter2.md",
+      "title": "3. What is ER Model? And Why?"
+    },
+    {
+      "id": "c2-05",
+      "file": "materials/DB-Chapter2.md",
+      "title": "4. ER Model Concepts"
+    },
+    {
+      "id": "c2-06",
+      "file": "materials/DB-Chapter2.md",
+      "title": "5. ER Diagram and Naming Conventions"
+    },
+    {
+      "id": "c2-07",
+      "file": "materials/DB-Chapter2.md",
+      "title": "6. Alternative Diagrammatic Notations"
+    },
+    {
+      "id": "c2-08",
+      "file": "materials/DB-Chapter2.md",
+      "title": "7. Problems with ER Models"
+    },
+    {
+      "id": "c2-09",
+      "file": "materials/DB-Chapter2.md",
+      "title": "TH2 — Bảng tra nhanh trước khi thi"
+    },
+    {
+      "id": "c2-10",
+      "file": "materials/DB-Chapter2.md",
+      "title": "TH3 — Sai lầm thường gặp khi học ER"
+    },
+    {
+      "id": "c2-11",
+      "file": "materials/DB-Chapter2.md",
+      "title": "TH4 — Bài tập tự luyện có lời giải"
+    },
+    {
+      "id": "c2-12",
+      "file": "materials/DB-Chapter2.md",
+      "title": "TH5 — Liên kết Lab / BTL"
+    },
+    {
+      "id": "c2-13",
+      "file": "materials/DB-Chapter2.md",
+      "title": "Bảng Tổng Hợp Thuật Ngữ Chương 2"
+    },
+    {
+      "id": "c2-14",
+      "file": "materials/DB-Chapter2.md",
+      "title": "Tổng Kết — Những Điểm Khả Năng Cao Ra Thi"
+    },
+    {
+      "id": "c2-15",
+      "file": "materials/DB-Chapter2.md",
+      "title": "Câu Hỏi Ôn Tập (từ slide gốc)"
+    },
+    {
+      "id": "c2-16",
+      "file": "materials/DB-Chapter2.md",
+      "title": "Đáp án Tự kiểm tra"
+    },
+    {
+      "id": "c2-17",
+      "file": "materials/DB-Chapter2.md",
+      "title": "Mối Quan Hệ Với Các Chương Khác"
+    },
+    {
+      "id": "guide-2",
+      "file": "lessons/02-er.md",
+      "title": "ER · Thực thể và quan hệ"
+    },
+    {
+      "id": "c3-00",
+      "file": "materials/DB-Chapter3.md",
+      "title": "Chương 3: Mô hình Thực thể-Mối liên kết Mở rộng — *Enhanced Entity-Relationship (EER) Model*"
+    },
+    {
+      "id": "c3-01",
+      "file": "materials/DB-Chapter3.md",
+      "title": "0. Trước khi bắt đầu"
+    },
+    {
+      "id": "c3-02",
+      "file": "materials/DB-Chapter3.md",
+      "title": "1. Introduction to Enhanced-ER Model"
+    },
+    {
+      "id": "c3-03",
+      "file": "materials/DB-Chapter3.md",
+      "title": "2. Subclasses, Superclasses, and Inheritance"
+    },
+    {
+      "id": "c3-04",
+      "file": "materials/DB-Chapter3.md",
+      "title": "3. Specialization and Generalization"
+    },
+    {
+      "id": "c3-05",
+      "file": "materials/DB-Chapter3.md",
+      "title": "4. Constraints and Characteristics of Specialization/Generalization Hierarchies"
+    },
+    {
+      "id": "c3-06",
+      "file": "materials/DB-Chapter3.md",
+      "title": "5. Categories (Union Types)"
+    },
+    {
+      "id": "c3-07",
+      "file": "materials/DB-Chapter3.md",
+      "title": "6. Design Choices and Formal Definitions"
+    },
+    {
+      "id": "c3-08",
+      "file": "materials/DB-Chapter3.md",
+      "title": "7. Bảng Tổng Hợp Thuật Ngữ Chương 3"
+    },
+    {
+      "id": "c3-09",
+      "file": "materials/DB-Chapter3.md",
+      "title": "8. Tổng Kết — Những Điểm Khả Năng Cao Ra Thi"
+    },
+    {
+      "id": "c3-10",
+      "file": "materials/DB-Chapter3.md",
+      "title": "9. Bảng Tra Nhanh (Quick Reference)"
+    },
+    {
+      "id": "c3-11",
+      "file": "materials/DB-Chapter3.md",
+      "title": "10. Sai lầm thường gặp (Common Mistakes)"
+    },
+    {
+      "id": "c3-12",
+      "file": "materials/DB-Chapter3.md",
+      "title": "11. Câu Hỏi Ôn Tập (Exercises từ slide gốc)"
+    },
+    {
+      "id": "c3-13",
+      "file": "materials/DB-Chapter3.md",
+      "title": "12. Đáp án Tự kiểm tra"
+    },
+    {
+      "id": "c3-14",
+      "file": "materials/DB-Chapter3.md",
+      "title": "13. Mối Quan Hệ Với Các Chương Khác — Liên kết Lab/BTL"
+    },
+    {
+      "id": "c3-15",
+      "file": "materials/DB-Chapter3.md",
+      "title": "14. Phụ lục — Mapping 62 slide → Section trong tài liệu này"
+    },
+    {
+      "id": "c3-16",
+      "file": "materials/DB-Chapter3.md",
+      "title": "15. Bảng so sánh nguồn (Prompt 3 audit table)"
+    },
+    {
+      "id": "c3-17",
+      "file": "materials/DB-Chapter3.md",
+      "title": "16. Checklist tổng hợp cuối cùng"
+    },
+    {
+      "id": "guide-3",
+      "file": "lessons/03-eer.md",
+      "title": "EER · Kế thừa và phân loại"
+    },
+    {
+      "id": "c4-00",
+      "file": "materials/DB-Chapter4.md",
+      "title": "Chương 4: Mô hình Quan hệ và Ánh xạ ER/EER → Quan hệ — *Relational Data Model and ER/EER-to-Relational Mapping*"
+    },
+    {
+      "id": "c4-01",
+      "file": "materials/DB-Chapter4.md",
+      "title": "0. Trước khi bắt đầu"
+    },
+    {
+      "id": "c4-02",
+      "file": "materials/DB-Chapter4.md",
+      "title": "1. Relational Data Model"
+    },
+    {
+      "id": "c4-03",
+      "file": "materials/DB-Chapter4.md",
+      "title": "2. Main Phases of Database Design"
+    },
+    {
+      "id": "c4-04",
+      "file": "materials/DB-Chapter4.md",
+      "title": "3. ER-/EER-to-Relational Mapping"
+    },
+    {
+      "id": "c4-05",
+      "file": "materials/DB-Chapter4.md",
+      "title": "4. Toàn bộ kết quả mapping COMPANY ER schema"
+    },
+    {
+      "id": "c4-06",
+      "file": "materials/DB-Chapter4.md",
+      "title": "5. Bảng Tổng Hợp Thuật Ngữ Chương 4"
+    },
+    {
+      "id": "c4-07",
+      "file": "materials/DB-Chapter4.md",
+      "title": "6. Tổng Kết — Những Điểm Khả Năng Cao Ra Thi"
+    },
+    {
+      "id": "c4-08",
+      "file": "materials/DB-Chapter4.md",
+      "title": "7. Bảng Tra Nhanh (Quick Reference)"
+    },
+    {
+      "id": "c4-09",
+      "file": "materials/DB-Chapter4.md",
+      "title": "8. Sai lầm thường gặp (Common Mistakes)"
+    },
+    {
+      "id": "c4-10",
+      "file": "materials/DB-Chapter4.md",
+      "title": "9. Bài tập tự luyện có lời giải"
+    },
+    {
+      "id": "c4-11",
+      "file": "materials/DB-Chapter4.md",
+      "title": "10. Câu Hỏi Ôn Tập (từ slide gốc + đề cương)"
+    },
+    {
+      "id": "c4-12",
+      "file": "materials/DB-Chapter4.md",
+      "title": "11. Đáp án Tự kiểm tra"
+    },
+    {
+      "id": "c4-13",
+      "file": "materials/DB-Chapter4.md",
+      "title": "12. Mối Quan Hệ Với Các Chương Khác — Liên kết Lab/BTL"
+    },
+    {
+      "id": "c4-14",
+      "file": "materials/DB-Chapter4.md",
+      "title": "13. Phụ lục — Mapping 90 slide → Section"
+    },
+    {
+      "id": "c4-15",
+      "file": "materials/DB-Chapter4.md",
+      "title": "14. Bảng so sánh nguồn (Prompt 3 audit table)"
+    },
+    {
+      "id": "c4-16",
+      "file": "materials/DB-Chapter4.md",
+      "title": "15. Checklist tổng hợp cuối cùng"
+    },
+    {
+      "id": "guide-4",
+      "file": "lessons/04-mapping.md",
+      "title": "Relational mapping"
+    },
+    {
+      "id": "c5-00",
+      "file": "materials/DB-Chapter5.md",
+      "title": "Chương 5: Đại Số Quan Hệ — Relational Algebra"
+    },
+    {
+      "id": "c5-01",
+      "file": "materials/DB-Chapter5.md",
+      "title": "0. Trước khi bắt đầu"
+    },
+    {
+      "id": "c5-02",
+      "file": "materials/DB-Chapter5.md",
+      "title": "Tổng quan — Relational Algebra là gì? (slide 2–3)"
+    },
+    {
+      "id": "c5-03",
+      "file": "materials/DB-Chapter5.md",
+      "title": "1. Unary Relational Operations — Toán tử quan hệ một ngôi"
+    },
+    {
+      "id": "c5-04",
+      "file": "materials/DB-Chapter5.md",
+      "title": "2. Set Theory Operations — Toán tử từ Lý thuyết Tập hợp"
+    },
+    {
+      "id": "c5-05",
+      "file": "materials/DB-Chapter5.md",
+      "title": "3. Binary Relational Operations — Toán tử Hai ngôi"
+    },
+    {
+      "id": "c5-06",
+      "file": "materials/DB-Chapter5.md",
+      "title": "4. Additional Relational Operations — Phép Mở rộng"
+    },
+    {
+      "id": "c5-07",
+      "file": "materials/DB-Chapter5.md",
+      "title": "5. Brief Introduction to Relational Calculus (slide 76–85)"
+    },
+    {
+      "id": "c5-08",
+      "file": "materials/DB-Chapter5.md",
+      "title": "📌 Bảng Tra Nhanh — Cheatsheet ôn thi"
+    },
+    {
+      "id": "c5-09",
+      "file": "materials/DB-Chapter5.md",
+      "title": "⚠️ Sai lầm thường gặp"
+    },
+    {
+      "id": "c5-10",
+      "file": "materials/DB-Chapter5.md",
+      "title": "🎯 Mini bài tập có lời giải"
+    },
+    {
+      "id": "c5-11",
+      "file": "materials/DB-Chapter5.md",
+      "title": "🔗 Liên kết Lab / BTL"
+    },
+    {
+      "id": "c5-12",
+      "file": "materials/DB-Chapter5.md",
+      "title": "📚 Bảng Tổng Hợp Thuật Ngữ Chương 5 (Glossary)"
+    },
+    {
+      "id": "c5-13",
+      "file": "materials/DB-Chapter5.md",
+      "title": "📑 Phụ lục A — Slide-by-slide index"
+    },
+    {
+      "id": "c5-14",
+      "file": "materials/DB-Chapter5.md",
+      "title": "🎯 Tổng Kết — Những Điểm Khả Năng Cao Ra Thi"
+    },
+    {
+      "id": "c5-15",
+      "file": "materials/DB-Chapter5.md",
+      "title": "✅ Đáp án Tự kiểm tra"
+    },
+    {
+      "id": "c5-16",
+      "file": "materials/DB-Chapter5.md",
+      "title": "🔁 Mối Quan Hệ Với Các Chương Khác"
+    },
+    {
+      "id": "c5-17",
+      "file": "materials/DB-Chapter5.md",
+      "title": "✅ Checklist Tổng hợp Cuối Cùng"
+    },
+    {
+      "id": "guide-5",
+      "file": "lessons/05-algebra.md",
+      "title": "Đại số quan hệ"
+    },
+    {
+      "id": "c6-00",
+      "file": "materials/DB-Chapter6.md",
+      "title": "Chương 6: Ngôn ngữ Truy vấn Có Cấu trúc — Structured Query Language (SQL)"
+    },
+    {
+      "id": "c6-01",
+      "file": "materials/DB-Chapter6.md",
+      "title": "0. Trước khi bắt đầu"
+    },
+    {
+      "id": "c6-02",
+      "file": "materials/DB-Chapter6.md",
+      "title": "1. Introduction of Structured Query Language"
+    },
+    {
+      "id": "c6-03",
+      "file": "materials/DB-Chapter6.md",
+      "title": "2. DDL — Data Definition Language"
+    },
+    {
+      "id": "c6-04",
+      "file": "materials/DB-Chapter6.md",
+      "title": "3. DML — SELECT: Truy vấn dữ liệu"
+    },
+    {
+      "id": "c6-05",
+      "file": "materials/DB-Chapter6.md",
+      "title": "4. DML — INSERT, DELETE, UPDATE"
+    },
+    {
+      "id": "c6-06",
+      "file": "materials/DB-Chapter6.md",
+      "title": "5. Advanced DDL — Assertions & Triggers"
+    },
+    {
+      "id": "c6-07",
+      "file": "materials/DB-Chapter6.md",
+      "title": "6. Views — Quan hệ ảo"
+    },
+    {
+      "id": "c6-08",
+      "file": "materials/DB-Chapter6.md",
+      "title": "7. DCL — Data Control Language (Slide 98–108)"
+    },
+    {
+      "id": "c6-09",
+      "file": "materials/DB-Chapter6.md",
+      "title": "Bảng Tra Nhanh Chương 6 (cheat sheet)"
+    },
+    {
+      "id": "c6-10",
+      "file": "materials/DB-Chapter6.md",
+      "title": "Sai lầm thường gặp (Top 10)"
+    },
+    {
+      "id": "c6-11",
+      "file": "materials/DB-Chapter6.md",
+      "title": "Câu Hỏi Ôn Tập (từ slide gốc) — Lời giải đầy đủ"
+    },
+    {
+      "id": "c6-12",
+      "file": "materials/DB-Chapter6.md",
+      "title": "Bài Tập Tự Luyện (5 bài)"
+    },
+    {
+      "id": "c6-13",
+      "file": "materials/DB-Chapter6.md",
+      "title": "Tổng Kết — Những Điểm Khả Năng Cao Ra Thi"
+    },
+    {
+      "id": "c6-14",
+      "file": "materials/DB-Chapter6.md",
+      "title": "Liên Kết Lab / BTL (TH5)"
+    },
+    {
+      "id": "c6-15",
+      "file": "materials/DB-Chapter6.md",
+      "title": "Bảng Tổng Hợp Thuật Ngữ Chương 6 (Glossary)"
+    },
+    {
+      "id": "c6-16",
+      "file": "materials/DB-Chapter6.md",
+      "title": "Đáp án Tự kiểm tra"
+    },
+    {
+      "id": "c6-17",
+      "file": "materials/DB-Chapter6.md",
+      "title": "Mối Quan Hệ Với Các Chương Khác"
+    },
+    {
+      "id": "c6-18",
+      "file": "materials/DB-Chapter6.md",
+      "title": "Phụ lục A — Slide-by-slide Coverage Ledger"
+    },
+    {
+      "id": "c6-19",
+      "file": "materials/DB-Chapter6.md",
+      "title": "CHECKLIST TỔNG HỢP — Tự Audit"
+    },
+    {
+      "id": "guide-6",
+      "file": "lessons/06-sql.md",
+      "title": "SQL từ cơ bản đến nâng cao"
+    },
+    {
+      "id": "c7-00",
+      "file": "materials/DB-Chapter7.md",
+      "title": "Chương 7: Phụ Thuộc Hàm và Chuẩn Hóa Quan Hệ — Functional Dependencies & Normalization for Relational DBs"
+    },
+    {
+      "id": "c7-01",
+      "file": "materials/DB-Chapter7.md",
+      "title": "0. Trước khi bắt đầu"
+    },
+    {
+      "id": "c7-02",
+      "file": "materials/DB-Chapter7.md",
+      "title": "1. Vì sao cần Normalization? — Bốn vấn đề của thiết kế \"tệ\""
+    },
+    {
+      "id": "c7-03",
+      "file": "materials/DB-Chapter7.md",
+      "title": "2. Functional Dependencies (FDs) — Định nghĩa và các loại"
+    },
+    {
+      "id": "c7-04",
+      "file": "materials/DB-Chapter7.md",
+      "title": "3. Inference Rules — Quy tắc suy luận FD"
+    },
+    {
+      "id": "c7-05",
+      "file": "materials/DB-Chapter7.md",
+      "title": "4. Equivalence và Minimal Cover"
+    },
+    {
+      "id": "c7-06",
+      "file": "materials/DB-Chapter7.md",
+      "title": "5. Key-finding Algorithms (Slides 82–87)"
+    },
+    {
+      "id": "c7-07",
+      "file": "materials/DB-Chapter7.md",
+      "title": "6. Normalization — 1NF, 2NF, 3NF (Slides 46–66)"
+    },
+    {
+      "id": "c7-08",
+      "file": "materials/DB-Chapter7.md",
+      "title": "7. General Normal Form Definitions (Slides 67–73)"
+    },
+    {
+      "id": "c7-09",
+      "file": "materials/DB-Chapter7.md",
+      "title": "8. BCNF — Boyce-Codd Normal Form (Slides 75–80)"
+    },
+    {
+      "id": "c7-10",
+      "file": "materials/DB-Chapter7.md",
+      "title": "9. Bài tập từ slide (Slides 90–95)"
+    },
+    {
+      "id": "c7-11",
+      "file": "materials/DB-Chapter7.md",
+      "title": "Bảng Tra Nhanh — Tổng Hợp Thuật Ngữ Chương 7"
+    },
+    {
+      "id": "c7-12",
+      "file": "materials/DB-Chapter7.md",
+      "title": "Sai Lầm Thường Gặp khi Học Chương 7"
+    },
+    {
+      "id": "c7-13",
+      "file": "materials/DB-Chapter7.md",
+      "title": "Tổng Kết — Những Điểm Khả Năng Cao Ra Thi"
+    },
+    {
+      "id": "c7-14",
+      "file": "materials/DB-Chapter7.md",
+      "title": "Bài Tập Tự Luyện (Có Lời Giải)"
+    },
+    {
+      "id": "c7-15",
+      "file": "materials/DB-Chapter7.md",
+      "title": "Câu Hỏi Ôn Tập (từ slide gốc)"
+    },
+    {
+      "id": "c7-16",
+      "file": "materials/DB-Chapter7.md",
+      "title": "Đáp án Tự kiểm tra"
+    },
+    {
+      "id": "c7-17",
+      "file": "materials/DB-Chapter7.md",
+      "title": "Mối Quan Hệ Với Các Chương Khác"
+    },
+    {
+      "id": "guide-7",
+      "file": "lessons/07-normalization.md",
+      "title": "FD & Chuẩn hóa"
+    },
+    {
+      "id": "c8-00",
+      "file": "materials/DB-Chapter8.md",
+      "title": "Chương 8: Lưu Trữ Dữ Liệu và Cấu Trúc Chỉ Mục cho Tập Tin — Data Storage and Indexing Structures for Files"
+    },
+    {
+      "id": "c8-01",
+      "file": "materials/DB-Chapter8.md",
+      "title": "0. Trước khi bắt đầu"
+    },
+    {
+      "id": "c8-02",
+      "file": "materials/DB-Chapter8.md",
+      "title": "1. Data Storage — Lưu Trữ Dữ Liệu"
+    },
+    {
+      "id": "c8-03",
+      "file": "materials/DB-Chapter8.md",
+      "title": "2. Indexing Structures for Files"
+    },
+    {
+      "id": "c8-04",
+      "file": "materials/DB-Chapter8.md",
+      "title": "Bảng Tra Nhanh — 1 Trang Ôn Thi"
+    },
+    {
+      "id": "c8-05",
+      "file": "materials/DB-Chapter8.md",
+      "title": "Sai Lầm Thường Gặp"
+    },
+    {
+      "id": "c8-06",
+      "file": "materials/DB-Chapter8.md",
+      "title": "Câu Hỏi Ôn Tập (từ slide gốc — 5 Exercise)"
+    },
+    {
+      "id": "c8-07",
+      "file": "materials/DB-Chapter8.md",
+      "title": "Mini Bài Tập Tự Luyện (kèm Lời Giải)"
+    },
+    {
+      "id": "c8-08",
+      "file": "materials/DB-Chapter8.md",
+      "title": "Bảng Tổng Hợp Thuật Ngữ Chương 8 (Glossary)"
+    },
+    {
+      "id": "c8-09",
+      "file": "materials/DB-Chapter8.md",
+      "title": "Tổng Kết — Những Điểm Khả Năng Cao Ra Thi"
+    },
+    {
+      "id": "c8-10",
+      "file": "materials/DB-Chapter8.md",
+      "title": "Đáp án Tự Kiểm Tra"
+    },
+    {
+      "id": "c8-11",
+      "file": "materials/DB-Chapter8.md",
+      "title": "Mối Quan Hệ Với Các Chương Khác và Liên Hệ Lab/BTL"
+    },
+    {
+      "id": "c8-12",
+      "file": "materials/DB-Chapter8.md",
+      "title": "Câu hỏi/giả thiết còn mở (cần xác minh khi đi học)"
+    },
+    {
+      "id": "guide-8",
+      "file": "lessons/08-storage.md",
+      "title": "Storage & Indexing"
+    },
+    {
+      "id": "final-00",
+      "file": "materials/DB-Final.md",
+      "title": "📚 TÓM TẮT LÝ THUYẾT DATABASE SYSTEMS (CO2013) — FULL ĐIỂM CUỐI KỲ HK252"
+    },
+    {
+      "id": "final-01",
+      "file": "materials/DB-Final.md",
+      "title": "📑 MỤC LỤC"
+    },
+    {
+      "id": "final-02",
+      "file": "materials/DB-Final.md",
+      "title": "0.1. Formula sheet — phải thuộc lòng"
+    },
+    {
+      "id": "final-03",
+      "file": "materials/DB-Final.md",
+      "title": "0.2. NF decision tree (BẮT BUỘC nhớ)"
+    },
+    {
+      "id": "final-04",
+      "file": "materials/DB-Final.md",
+      "title": "0.3. ER notation cheatsheet"
+    },
+    {
+      "id": "final-05",
+      "file": "materials/DB-Final.md",
+      "title": "0.4. 3 loại Index — bảng vàng"
+    },
+    {
+      "id": "final-06",
+      "file": "materials/DB-Final.md",
+      "title": "0.5. SQL logical execution order"
+    },
+    {
+      "id": "final-07",
+      "file": "materials/DB-Final.md",
+      "title": "0.6. CAP Theorem (3 chọn 2)"
+    },
+    {
+      "id": "final-08",
+      "file": "materials/DB-Final.md",
+      "title": "0.7. ACID vs BASE"
+    },
+    {
+      "id": "final-09",
+      "file": "materials/DB-Final.md",
+      "title": "0.8. Magic numbers / hằng số phải thuộc"
+    },
+    {
+      "id": "final-10",
+      "file": "materials/DB-Final.md",
+      "title": "§1. DATABASE SYSTEM OVERVIEW — Trọng số đề: 5 câu"
+    },
+    {
+      "id": "final-11",
+      "file": "materials/DB-Final.md",
+      "title": "§2. ERD & EERD — Trọng số đề: 10 câu 🔥🔥"
+    },
+    {
+      "id": "final-12",
+      "file": "materials/DB-Final.md",
+      "title": "§3. RELATIONAL MAPPING (ER/EER → Relational) — Trọng số đề: 5 câu"
+    },
+    {
+      "id": "final-13",
+      "file": "materials/DB-Final.md",
+      "title": "§4. RELATIONAL ALGEBRA — Trọng số đề: 4 câu"
+    },
+    {
+      "id": "final-14",
+      "file": "materials/DB-Final.md",
+      "title": "§5. SQL — Trọng số đề: 9 câu 🔥🔥"
+    },
+    {
+      "id": "final-15",
+      "file": "materials/DB-Final.md",
+      "title": "§6. FUNCTIONAL DEPENDENCIES & NORMALIZATION — Trọng số đề: 6 câu 🔥"
+    },
+    {
+      "id": "final-16",
+      "file": "materials/DB-Final.md",
+      "title": "§7. DATA STORAGE & INDEXING — Trọng số đề: 4 câu"
+    },
+    {
+      "id": "final-17",
+      "file": "materials/DB-Final.md",
+      "title": "§8. DATABASE SECURITY — Trọng số đề: 3 câu"
+    },
+    {
+      "id": "final-18",
+      "file": "materials/DB-Final.md",
+      "title": "§9. ADVANCED TOPICS — Trọng số đề: 4 câu"
+    },
+    {
+      "id": "final-19",
+      "file": "materials/DB-Final.md",
+      "title": "11.1. Speed-recap \"if you see X → think Y\""
+    },
+    {
+      "id": "final-20",
+      "file": "materials/DB-Final.md",
+      "title": "11.2. Đáp án gây tranh cãi (class key ≠ lý thuyết chuẩn)"
+    },
+    {
+      "id": "final-21",
+      "file": "materials/DB-Final.md",
+      "title": "14.1. Bảng đối chiếu chương ↔ nguồn ↔ số câu"
+    },
+    {
+      "id": "final-22",
+      "file": "materials/DB-Final.md",
+      "title": "14.2. Chiến lược ôn 3 ngày"
+    },
+    {
+      "id": "final-23",
+      "file": "materials/DB-Final.md",
+      "title": "14.3. Lời cuối"
+    },
+    {
+      "id": "guide-final",
+      "file": "lessons/10-exam-roadmap.md",
+      "title": "Ôn cuối kỳ: học chủ động, có sản phẩm sau mỗi buổi"
+    },
+    {
+      "id": "guide-advanced",
+      "file": "lessons/09-security-advanced.md",
+      "title": "09 · Security, giao dịch và các chủ đề mở rộng"
+    },
+    {
+      "id": "editorial",
+      "file": "lessons/11-corrections-and-sources.md",
+      "title": "Ghi chú biên tập và nguồn đối chiếu"
+    },
+    {
+      "id": "lab-1",
+      "file": "labs/01-setup.md",
+      "title": "Lab 01 · Khởi động và kiểm tra ràng buộc"
+    },
+    {
+      "id": "lab-2",
+      "file": "labs/02-sql.md",
+      "title": "Lab 02 · Tự viết SQL trong một phiên giữ state"
+    },
+    {
+      "id": "lab-3",
+      "file": "labs/03-exercises.md",
+      "title": "40 bài SQL: tự làm → dự đoán → chạy → chữa"
+    },
+    {
+      "id": "lab-4",
+      "file": "labs/04-fd-storage.md",
+      "title": "Lab 04 · Tính tay rồi đối chiếu thuật toán"
+    },
+    {
+      "id": "lab-5",
+      "file": "labs/05-security.md",
+      "title": "Lab 05 · Giao dịch, index và parameter binding"
+    },
+    {
+      "id": "lab-6",
+      "file": "labs/06-anime-capstone.md",
+      "title": "Lab 06 · Capstone Anime Streaming"
+    },
+    {
+      "id": "lab-7",
+      "file": "labs/07-mock-exam.md",
+      "title": "50 câu tự luyện có giải thích"
+    }
+  ]
+}

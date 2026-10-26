@@ -1,0 +1,652 @@
+[
+  {
+    "id": "M01",
+    "topic": "c1",
+    "prompt": "Schema khác state ở điểm nào?",
+    "choices": [
+      "Schema là bản backup; state là chương trình",
+      "Schema thay đổi sau mỗi SELECT",
+      "Hai khái niệm đồng nghĩa",
+      "Schema mô tả cấu trúc; state là dữ liệu tại một thời điểm"
+    ],
+    "answer": 3,
+    "explanation": "INSERT đổi state mà không bắt buộc đổi schema. CREATE/ALTER thường tác động schema."
+  },
+  {
+    "id": "M02",
+    "topic": "c1",
+    "prompt": "Thêm index nhưng ứng dụng vẫn dùng nguyên SQL minh họa điều gì?",
+    "choices": [
+      "Logical independence",
+      "Physical independence",
+      "Total participation",
+      "Entity integrity"
+    ],
+    "answer": 1,
+    "explanation": "Index là đường truy cập ở mức vật lý; interface logic có thể giữ nguyên."
+  },
+  {
+    "id": "M03",
+    "topic": "c1",
+    "prompt": "Metadata là ví dụ nào?",
+    "choices": [
+      "Ảnh đại diện người dùng",
+      "Lương của John",
+      "Danh sách tên cột và kiểu dữ liệu",
+      "Một dòng đặt vé"
+    ],
+    "answer": 2,
+    "explanation": "Metadata mô tả cấu trúc và quy tắc của dữ liệu, thường trong catalog."
+  },
+  {
+    "id": "M04",
+    "topic": "c1",
+    "prompt": "Hai ứng dụng cùng ghi đè số chỗ trống gây vấn đề chính nào?",
+    "choices": [
+      "Specialization",
+      "Minimal cover",
+      "Projection",
+      "Concurrency"
+    ],
+    "answer": 3,
+    "explanation": "Các thao tác đồng thời cần cơ chế transaction/isolation để tránh mất cập nhật hoặc vi phạm bất biến."
+  },
+  {
+    "id": "M05",
+    "topic": "c1",
+    "prompt": "Ba-schema architecture là gì?",
+    "choices": [
+      "External, conceptual, internal",
+      "RAM, CPU, SSD",
+      "DDL, DML, DCL",
+      "Frontend, API, database server"
+    ],
+    "answer": 0,
+    "explanation": "Đây là ba mức mô tả dữ liệu, không phải ba tầng triển khai ứng dụng."
+  },
+  {
+    "id": "M06",
+    "topic": "c2",
+    "prompt": "Cardinality và participation lần lượt nói về điều gì?",
+    "choices": [
+      "Minimum và kiểu dữ liệu",
+      "Maximum và yêu cầu tham gia tối thiểu",
+      "Số cột và số hàng hiện tại",
+      "Tên khóa và index"
+    ],
+    "answer": 1,
+    "explanation": "1:N/M:N không cho biết phía nào bắt buộc phải có ít nhất một liên kết."
+  },
+  {
+    "id": "M07",
+    "topic": "c2",
+    "prompt": "Trong Chen, đường đôi từ ANIME tới Has_genre biểu diễn gì?",
+    "choices": [
+      "Quan hệ 1:1",
+      "Anime có đúng hai genre",
+      "ANIME total participation",
+      "GENRE là weak entity"
+    ],
+    "answer": 2,
+    "explanation": "Mọi anime phải tham gia ít nhất một instance quan hệ; không suy ra tối đa là bao nhiêu."
+  },
+  {
+    "id": "M08",
+    "topic": "c2",
+    "prompt": "AddedAt khi thêm anime vào watch list nên gắn với gì?",
+    "choices": [
+      "Contains giữa list và anime",
+      "Tên studio",
+      "ANIME",
+      "GENRE"
+    ],
+    "answer": 0,
+    "explanation": "Giá trị phụ thuộc vào cặp list–anime, không chỉ một entity riêng lẻ."
+  },
+  {
+    "id": "M09",
+    "topic": "c2",
+    "prompt": "Điều gì đặc trưng cho thực thể yếu?",
+    "choices": [
+      "Cần khóa owner cộng partial key để định danh",
+      "Bất cứ entity nào có FK",
+      "Không có thuộc tính",
+      "Luôn có ít hơn 10 hàng"
+    ],
+    "answer": 0,
+    "explanation": "Sự phụ thuộc định danh là cốt lõi; nhiều entity mạnh cũng có FK sau mapping."
+  },
+  {
+    "id": "M10",
+    "topic": "c2",
+    "prompt": "EpisodeNo chỉ duy nhất trong cùng anime. Khóa tự nhiên phù hợp là gì?",
+    "choices": [
+      "EpisodeNo",
+      "Title",
+      "AnimeID + EpisodeNo",
+      "Duration"
+    ],
+    "answer": 2,
+    "explanation": "Hai anime có thể cùng tập số 1 nên EpisodeNo riêng không đủ định danh."
+  },
+  {
+    "id": "M11",
+    "topic": "c2",
+    "prompt": "Biết nhân viên và dự án cùng thuộc một phòng có đủ xác định ai làm dự án nào?",
+    "choices": [
+      "Đủ nếu cả hai FK NOT NULL",
+      "Luôn đủ",
+      "Chỉ khi phòng có tên",
+      "Không; cần quan hệ phân công hoặc constraint tương ứng"
+    ],
+    "answer": 3,
+    "explanation": "Cùng phòng không đồng nghĩa phân công; suy diễn qua đường nối có thể tạo fan trap."
+  },
+  {
+    "id": "M12",
+    "topic": "c3",
+    "prompt": "Overlapping specialization cho phép điều gì?",
+    "choices": [
+      "Không entity nào có subclass",
+      "Subclass không kế thừa khóa",
+      "Một entity thuộc nhiều subclass trong specialization",
+      "Mọi entity phải thuộc mọi subclass"
+    ],
+    "answer": 2,
+    "explanation": "Cho phép giao giữa các subclass; không bắt buộc giao luôn khác rỗng trong mọi state."
+  },
+  {
+    "id": "M13",
+    "topic": "c3",
+    "prompt": "Total specialization tương ứng với điều kiện nào?",
+    "choices": [
+      "Hợp các subclass bằng superclass",
+      "Mọi subclass đều có ít nhất một hàng",
+      "Superclass không có khóa",
+      "Giao subclass rỗng"
+    ],
+    "answer": 0,
+    "explanation": "Total yêu cầu bao phủ mọi entity của superclass, không yêu cầu mỗi subclass không rỗng."
+  },
+  {
+    "id": "M14",
+    "topic": "c3",
+    "prompt": "Shared subclass và category khác nhau ở phép tập hợp nào?",
+    "choices": [
+      "Cả hai luôn là hợp",
+      "Shared subclass là subset của giao; category là subset của hợp",
+      "Shared subclass là hiệu",
+      "Category là tích Descartes"
+    ],
+    "answer": 1,
+    "explanation": "Teaching assistant thuộc student và employee; owner có thể là person hoặc company."
+  },
+  {
+    "id": "M15",
+    "topic": "c3",
+    "prompt": "Superclass + hai bảng subclass PK/FK mặc định có enforce total không?",
+    "choices": [
+      "Chỉ cần UNIQUE trên tên",
+      "Có, vì có FK",
+      "Có, vì subclass có PK",
+      "Không; superclass có thể chưa có hàng con"
+    ],
+    "answer": 3,
+    "explanation": "FK đảm bảo con có cha, không đảm bảo mọi cha có ít nhất một loại con."
+  },
+  {
+    "id": "M16",
+    "topic": "c4",
+    "prompt": "Mapping quan hệ 1:N thường đặt FK ở đâu?",
+    "choices": [
+      "Cả hai phía bắt buộc",
+      "Không cần FK",
+      "Phía N",
+      "Luôn phía 1"
+    ],
+    "answer": 2,
+    "explanation": "Mỗi hàng phía N có thể giữ khóa của một owner phía 1; tránh cột lặp ở phía 1."
+  },
+  {
+    "id": "M17",
+    "topic": "c4",
+    "prompt": "Mapping 1:1 bằng FK còn cần gì để chặn nhiều hàng trỏ cùng cha?",
+    "choices": [
+      "UNIQUE trên FK",
+      "ORDER BY",
+      "DEFAULT 0",
+      "SUM"
+    ],
+    "answer": 0,
+    "explanation": "FK chỉ kiểm tra tồn tại cha; UNIQUE giới hạn tối đa một hàng tham chiếu cùng khóa cha."
+  },
+  {
+    "id": "M18",
+    "topic": "c4",
+    "prompt": "M:N Produced_by nên được ánh xạ thế nào?",
+    "choices": [
+      "Một StudioID duy nhất trong ANIME",
+      "Một bảng liên kết chứa cả hai khóa",
+      "Một chuỗi chứa mọi studio trong một ô",
+      "Không thể mapping"
+    ],
+    "answer": 1,
+    "explanation": "Bảng liên kết cho phép nhiều studio trên anime và nhiều anime trên studio."
+  },
+  {
+    "id": "M19",
+    "topic": "c4",
+    "prompt": "Superkey khác candidate key thế nào?",
+    "choices": [
+      "Hai khái niệm hoàn toàn khác",
+      "Candidate key là superkey tối thiểu theo bao hàm",
+      "Superkey luôn chỉ có một thuộc tính",
+      "Candidate key được phép trùng"
+    ],
+    "answer": 1,
+    "explanation": "Thêm thuộc tính vào candidate key vẫn tạo superkey nhưng thường không còn tối thiểu."
+  },
+  {
+    "id": "M20",
+    "topic": "c4",
+    "prompt": "FK NOT NULL từ anime_genre tới anime đã đảm bảo mọi anime có genre chưa?",
+    "choices": [
+      "Chỉ cần thêm PK anime",
+      "Thêm CHECK anime_id>0 là đủ",
+      "Đã đủ",
+      "Chưa; anime có thể chưa được tham chiếu"
+    ],
+    "answer": 3,
+    "explanation": "Constraint chỉ buộc mỗi hàng liên kết có cha; cần điều kiện tồn tại theo chiều ngược lại."
+  },
+  {
+    "id": "M21",
+    "topic": "c5",
+    "prompt": "Projection trong RA cổ điển xử lý dòng trùng thế nào?",
+    "choices": [
+      "Loại tuple trùng",
+      "Nhân đôi tuple",
+      "Chỉ giữ dòng đầu theo thứ tự",
+      "Giữ mọi dòng như SQL mặc định"
+    ],
+    "answer": 0,
+    "explanation": "RA dùng set semantics; SQL thường cần DISTINCT để có hành vi tương ứng."
+  },
+  {
+    "id": "M22",
+    "topic": "c5",
+    "prompt": "Natural join chọn cột nối dựa trên gì?",
+    "choices": [
+      "FK metadata",
+      "Tên cột trùng",
+      "Cột đầu tiên mỗi bảng",
+      "Mọi cột kiểu số"
+    ],
+    "answer": 1,
+    "explanation": "Dno và Dnumber không tự match chỉ vì chúng có quan hệ FK."
+  },
+  {
+    "id": "M23",
+    "topic": "c5",
+    "prompt": "Từ “mọi / tất cả” thường gợi ý mẫu nào?",
+    "choices": [
+      "LEFT JOIN luôn đủ",
+      "Một điều kiện = duy nhất",
+      "Division hoặc không tồn tại phản ví dụ",
+      "ORDER BY"
+    ],
+    "answer": 2,
+    "explanation": "For all x, P(x) tương đương không tồn tại x sao cho không P(x)."
+  },
+  {
+    "id": "M24",
+    "topic": "c5",
+    "prompt": "Union hai quan hệ đòi hỏi gì?",
+    "choices": [
+      "Cùng primary key tên giống nhau",
+      "Cùng số index",
+      "Cùng số tuple",
+      "Union-compatible về số cột và miền tương ứng"
+    ],
+    "answer": 3,
+    "explanation": "Hai tập phải có cấu trúc tương thích; không cần có cùng số hàng."
+  },
+  {
+    "id": "M25",
+    "topic": "c6",
+    "prompt": "WHERE giữ các hàng có predicate nào?",
+    "choices": [
+      "FALSE",
+      "UNKNOWN",
+      "TRUE và UNKNOWN",
+      "TRUE"
+    ],
+    "answer": 3,
+    "explanation": "Trong SQL ba-valued logic, WHERE chỉ giữ TRUE."
+  },
+  {
+    "id": "M26",
+    "topic": "c6",
+    "prompt": "Cách kiểm tra Salary thiếu giá trị là gì?",
+    "choices": [
+      "Salary = NULL",
+      "Salary IS NULL",
+      "Salary = 0",
+      "Salary = empty"
+    ],
+    "answer": 1,
+    "explanation": "= NULL cho UNKNOWN; IS NULL là phép kiểm tra thiếu giá trị."
+  },
+  {
+    "id": "M27",
+    "topic": "c6",
+    "prompt": "COUNT(*) khác COUNT(Salary) khi có NULL thế nào?",
+    "choices": [
+      "COUNT(Salary) cộng lương",
+      "COUNT(*) bỏ NULL",
+      "COUNT(Salary) bỏ hàng có Salary NULL",
+      "Cả hai luôn bằng nhau"
+    ],
+    "answer": 2,
+    "explanation": "COUNT(*) đếm hàng; COUNT(expression) đếm biểu thức non-NULL."
+  },
+  {
+    "id": "M28",
+    "topic": "c6",
+    "prompt": "Sau LEFT JOIN, WHERE trên cột bên phải có thể gây gì?",
+    "choices": [
+      "Tự biến thành FULL JOIN",
+      "Tự enforce FK",
+      "Luôn giữ mọi hàng trái",
+      "Loại các hàng NULL-extended"
+    ],
+    "answer": 3,
+    "explanation": "Predicate thông thường như e.Salary>40000 cho UNKNOWN ở hàng không match và hàng đó bị loại."
+  },
+  {
+    "id": "M29",
+    "topic": "c6",
+    "prompt": "Lọc nhóm có COUNT>=4 nên đặt ở đâu?",
+    "choices": [
+      "HAVING COUNT(*)>=4",
+      "ORDER BY COUNT(*)>=4",
+      "PRIMARY KEY",
+      "WHERE COUNT(*)>=4"
+    ],
+    "answer": 0,
+    "explanation": "HAVING lọc nhóm sau aggregation trong thứ tự xử lý logic."
+  },
+  {
+    "id": "M30",
+    "topic": "c6",
+    "prompt": "NOT IN có NULL trong tập con có thể làm gì?",
+    "choices": [
+      "Luôn coi NULL là 0",
+      "Không cho TRUE đối với các giá trị không match còn lại",
+      "Luôn trả tất cả hàng",
+      "Tự bỏ NULL"
+    ],
+    "answer": 1,
+    "explanation": "Với x không bằng giá trị đã biết nào, so với NULL vẫn UNKNOWN; dùng NOT EXISTS cho anti join phù hợp."
+  },
+  {
+    "id": "M31",
+    "topic": "c6",
+    "prompt": "Double NOT EXISTS với tập yêu cầu rỗng trả gì trong mẫu lấy ứng viên từ EMPLOYEE?",
+    "choices": [
+      "Lỗi SQL",
+      "Không ai",
+      "Mọi ứng viên EMPLOYEE",
+      "Chỉ nhân viên có dự án"
+    ],
+    "answer": 2,
+    "explanation": "Không tồn tại phản ví dụ trong tập rỗng: vacuous truth."
+  },
+  {
+    "id": "M32",
+    "topic": "c6",
+    "prompt": "Prepared statement placeholder dùng trực tiếp để thay gì?",
+    "choices": [
+      "Giá trị tham số",
+      "Từ khóa SELECT",
+      "Tên bảng tùy ý",
+      "Tên cột tùy ý"
+    ],
+    "answer": 0,
+    "explanation": "Parameter binding tách giá trị khỏi cú pháp. Identifier động cần whitelist/cơ chế quoting phù hợp."
+  },
+  {
+    "id": "M33",
+    "topic": "c6",
+    "prompt": "View thông thường có nhất thiết lưu một bản sao vật lý kết quả không?",
+    "choices": [
+      "Không; khác materialized view",
+      "Chỉ khi có WHERE",
+      "Chỉ khi có JOIN",
+      "Có"
+    ],
+    "answer": 0,
+    "explanation": "View thường đặt tên cho query; materialized view là khái niệm khác, tùy DBMS."
+  },
+  {
+    "id": "M34",
+    "topic": "c7",
+    "prompt": "FD A→B có nghĩa gì?",
+    "choices": [
+      "A nhỏ hơn B",
+      "Hai tuple cùng A phải cùng B trong mọi state hợp lệ",
+      "B luôn là primary key",
+      "A và B cùng kiểu"
+    ],
+    "answer": 1,
+    "explanation": "FD là ràng buộc của schema/miniworld, không chỉ một mẫu tình cờ trong dữ liệu hiện có."
+  },
+  {
+    "id": "M35",
+    "topic": "c7",
+    "prompt": "R(A,B,C), F={A→B,B→C}; A+ là gì?",
+    "choices": [
+      "BC",
+      "A",
+      "AB",
+      "ABC"
+    ],
+    "answer": 3,
+    "explanation": "Khởi tạo A; A→B thêm B; B→C thêm C; dừng khi không đổi."
+  },
+  {
+    "id": "M36",
+    "topic": "c7",
+    "prompt": "R(A,B,C), F={A→B,B→A}; candidate keys là gì?",
+    "choices": [
+      "Chỉ ABC",
+      "C",
+      "A và B",
+      "AC và BC"
+    ],
+    "answer": 3,
+    "explanation": "C không xuất hiện RHS nên bắt buộc thuộc key. AC và BC xác định toàn R, bỏ bất cứ thành phần nào đều không đủ."
+  },
+  {
+    "id": "M37",
+    "topic": "c7",
+    "prompt": "Prime attribute là gì?",
+    "choices": [
+      "Nằm trong ít nhất một candidate key",
+      "Có giá trị là số nguyên tố",
+      "Nằm trong mọi candidate key",
+      "Chỉ nằm trong primary key được chọn"
+    ],
+    "answer": 0,
+    "explanation": "Phải tìm đủ candidate keys trước khi đánh dấu prime để kiểm 3NF."
+  },
+  {
+    "id": "M38",
+    "topic": "c7",
+    "prompt": "FD nontrivial X→a thỏa 3NF khi nào?",
+    "choices": [
+      "X superkey hoặc a prime",
+      "X phải candidate key đúng bằng PK",
+      "a phải nonprime",
+      "X luôn một thuộc tính"
+    ],
+    "answer": 0,
+    "explanation": "BCNF chỉ giữ nhánh X là superkey; 3NF cho phép RHS prime."
+  },
+  {
+    "id": "M39",
+    "topic": "c7",
+    "prompt": "R tách thành R1 và R2. Điều kiện lossless binary theo FD là gì?",
+    "choices": [
+      "Mỗi bảng con tự đạt BCNF",
+      "Mọi bảng con đều có PK",
+      "Giao xác định R1 hoặc R2 theo F+",
+      "Hai bảng có cùng số hàng"
+    ],
+    "answer": 2,
+    "explanation": "(R1∩R2)→R1 hoặc →R2 là điều kiện cần và đủ trong mô hình phân rã nhị phân dựa trên FD."
+  },
+  {
+    "id": "M40",
+    "topic": "c8",
+    "prompt": "Unspanned, B=4096, R=100, không overhead: bfr bằng bao nhiêu?",
+    "choices": [
+      "409600",
+      "100",
+      "40",
+      "41"
+    ],
+    "answer": 2,
+    "explanation": "floor(B/R)=40 record/block. Làm tròn xuống vì record không được tách."
+  },
+  {
+    "id": "M41",
+    "topic": "c8",
+    "prompt": "r=30000, bfr=40: số data block là bao nhiêu?",
+    "choices": [
+      "750",
+      "751",
+      "1200000",
+      "749"
+    ],
+    "answer": 0,
+    "explanation": "ceil(r/bfr)=750 block; phép chia đã nguyên."
+  },
+  {
+    "id": "M42",
+    "topic": "c8",
+    "prompt": "Sparse primary index điển hình có bao nhiêu entry?",
+    "choices": [
+      "Một mỗi data block",
+      "Một mỗi byte",
+      "Luôn một mỗi record",
+      "Một mỗi bảng"
+    ],
+    "answer": 0,
+    "explanation": "Theo mô hình file sorted trên ordering key, một anchor đại diện mỗi data block."
+  },
+  {
+    "id": "M43",
+    "topic": "c8",
+    "prompt": "Hai mức index chưa cache và một data block: tổng accesses?",
+    "choices": [
+      "4",
+      "1",
+      "2",
+      "3"
+    ],
+    "answer": 3,
+    "explanation": "Số mức index là 2; cộng một lần đọc data block, tổng 3."
+  },
+  {
+    "id": "M44",
+    "topic": "security",
+    "prompt": "Authentication và authorization khác gì?",
+    "choices": [
+      "Tên bảng và khóa",
+      "Không khác nhau",
+      "Danh tính và quyền truy cập",
+      "Mã hóa và backup"
+    ],
+    "answer": 2,
+    "explanation": "Đăng nhập thành công không có nghĩa được phép mọi thao tác."
+  },
+  {
+    "id": "M45",
+    "topic": "security",
+    "prompt": "Bell–LaPadula tập trung bảo vệ gì?",
+    "choices": [
+      "Tốc độ query",
+      "Uniqueness",
+      "Backup duration",
+      "Confidentiality"
+    ],
+    "answer": 3,
+    "explanation": "No read up/no write down là các quy tắc bảo mật thông tin trong mô hình này, không phải mô hình integrity tổng quát."
+  },
+  {
+    "id": "M46",
+    "topic": "security",
+    "prompt": "Nguyên tắc least privilege yêu cầu gì?",
+    "choices": [
+      "Mọi user là DBA",
+      "Chỉ cấp quyền cần để hoàn thành công việc",
+      "Tắt audit",
+      "Chỉ dùng mật khẩu dài"
+    ],
+    "answer": 1,
+    "explanation": "Giảm quyền hạn chế phạm vi tác động nếu tài khoản hoặc ứng dụng gặp sự cố."
+  },
+  {
+    "id": "M47",
+    "topic": "advanced",
+    "prompt": "CAP nêu giới hạn quan trọng trong tình huống nào?",
+    "choices": [
+      "Khi có một SELECT",
+      "Khi network partition và vẫn đòi C cùng A theo định nghĩa",
+      "Chỉ khi hết RAM",
+      "Chỉ khi dùng SQL"
+    ],
+    "answer": 1,
+    "explanation": "Không diễn đạt thành ba thuộc tính tùy ý chọn hai mà bỏ điều kiện partition."
+  },
+  {
+    "id": "M48",
+    "topic": "advanced",
+    "prompt": "OLAP thường phục vụ loại công việc nào?",
+    "choices": [
+      "Chỉ thêm từng dòng đăng ký",
+      "Chỉ kiểm FK",
+      "Phân tích tổng hợp theo nhiều chiều",
+      "Chỉ đổi mật khẩu"
+    ],
+    "answer": 2,
+    "explanation": "OLTP phục vụ giao dịch nghiệp vụ, OLAP phục vụ truy vấn phân tích; có hệ hỗn hợp."
+  },
+  {
+    "id": "M49",
+    "topic": "advanced",
+    "prompt": "2PC có tự đồng nghĩa với 2PL không?",
+    "choices": [
+      "Không; atomic commit khác giao thức locking",
+      "Chỉ khác tên",
+      "Cả hai là kiểu index",
+      "Có"
+    ],
+    "answer": 0,
+    "explanation": "Two-Phase Commit phối hợp quyết định commit; Two-Phase Locking là cơ chế điều khiển đồng thời."
+  },
+  {
+    "id": "M50",
+    "topic": "advanced",
+    "prompt": "Xóa tên và email đã đủ bảo đảm k-anonymity chưa?",
+    "choices": [
+      "Luôn đủ",
+      "Không; còn phải xét quasi-identifiers và nhóm tương đương",
+      "Có nếu đủ 10 hàng",
+      "Có nếu dùng NoSQL"
+    ],
+    "answer": 1,
+    "explanation": "Tuổi, khu vực, nghề nghiệp kết hợp vẫn có thể nhận diện; k-anonymity có điều kiện hình thức riêng."
+  }
+]

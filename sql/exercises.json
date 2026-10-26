@@ -1,0 +1,858 @@
+[
+  {
+    "id": "Q01",
+    "title": "Tên các nhân viên thuộc Research, tăng dần theo Fname",
+    "sql": "SELECT Fname FROM EMPLOYEE WHERE Dno=5 ORDER BY Fname",
+    "expected": [
+      [
+        "Franklin"
+      ],
+      [
+        "John"
+      ],
+      [
+        "Joyce"
+      ],
+      [
+        "Ramesh"
+      ]
+    ],
+    "explanation": "WHERE lọc hàng theo mã phòng; ORDER BY giúp kết quả đối chiếu được.",
+    "level": "Cơ bản",
+    "database": "company"
+  },
+  {
+    "id": "Q02",
+    "title": "Nhân viên có lương ít nhất 40000",
+    "sql": "SELECT Fname,Salary FROM EMPLOYEE WHERE Salary>=40000 ORDER BY Fname",
+    "expected": [
+      [
+        "Franklin",
+        40000
+      ],
+      [
+        "James",
+        55000
+      ],
+      [
+        "Jennifer",
+        43000
+      ]
+    ],
+    "explanation": "So sánh >= giữ cả giá trị biên. Lương NULL không làm predicate TRUE.",
+    "level": "Cơ bản",
+    "database": "company"
+  },
+  {
+    "id": "Q03",
+    "title": "Nhân viên chưa biết lương",
+    "sql": "SELECT Fname FROM EMPLOYEE WHERE Salary IS NULL ORDER BY Fname",
+    "expected": [
+      [
+        "Mai"
+      ]
+    ],
+    "explanation": "IS NULL kiểm tra thiếu giá trị; = NULL không cho TRUE.",
+    "level": "Cơ bản",
+    "database": "company"
+  },
+  {
+    "id": "Q04",
+    "title": "Mã phòng thực sự có nhân viên, không trùng",
+    "sql": "SELECT DISTINCT Dno FROM EMPLOYEE ORDER BY Dno",
+    "expected": [
+      [
+        1
+      ],
+      [
+        4
+      ],
+      [
+        5
+      ]
+    ],
+    "explanation": "DISTINCT loại trùng sau projection; phòng 9 không có employee.",
+    "level": "Cơ bản",
+    "database": "company"
+  },
+  {
+    "id": "Q05",
+    "title": "Hai người có lương cao nhất trong những người biết lương",
+    "sql": "SELECT Fname,Salary FROM EMPLOYEE WHERE Salary IS NOT NULL ORDER BY Salary DESC,Ssn LIMIT 2",
+    "expected": [
+      [
+        "James",
+        55000
+      ],
+      [
+        "Jennifer",
+        43000
+      ]
+    ],
+    "explanation": "Lọc NULL trước; thêm Ssn để ổn định thứ tự khi bằng lương. LIMIT là dialect SQLite.",
+    "level": "Cơ bản",
+    "database": "company"
+  },
+  {
+    "id": "Q06",
+    "title": "Tên phòng của John Smith",
+    "sql": "SELECT e.Fname,d.Dname FROM EMPLOYEE e JOIN DEPARTMENT d ON d.Dnumber=e.Dno WHERE e.Ssn='123456789'",
+    "expected": [
+      [
+        "John",
+        "Research"
+      ]
+    ],
+    "explanation": "Nối bằng FK/PK, không dựa vào NATURAL JOIN khi tên cột khác nhau.",
+    "level": "Cơ bản",
+    "database": "company"
+  },
+  {
+    "id": "Q07",
+    "title": "Đếm nhân viên mỗi phòng, kể cả phòng rỗng",
+    "sql": "SELECT d.Dname,COUNT(e.Ssn) AS n FROM DEPARTMENT d LEFT JOIN EMPLOYEE e ON e.Dno=d.Dnumber GROUP BY d.Dnumber,d.Dname ORDER BY d.Dname",
+    "expected": [
+      [
+        "Administration",
+        4
+      ],
+      [
+        "Headquarters",
+        1
+      ],
+      [
+        "Innovation",
+        0
+      ],
+      [
+        "Research",
+        4
+      ]
+    ],
+    "explanation": "LEFT JOIN giữ phòng rỗng; COUNT(e.Ssn) bỏ NULL do outer join tạo ra. COUNT(*) sẽ cho Innovation=1.",
+    "level": "Cơ bản",
+    "database": "company"
+  },
+  {
+    "id": "Q08",
+    "title": "Phòng chưa có nhân viên",
+    "sql": "SELECT d.Dname FROM DEPARTMENT d WHERE NOT EXISTS(SELECT 1 FROM EMPLOYEE e WHERE e.Dno=d.Dnumber) ORDER BY d.Dname",
+    "expected": [
+      [
+        "Innovation"
+      ]
+    ],
+    "explanation": "NOT EXISTS kiểm tra không tồn tại nhân viên tương ứng.",
+    "level": "Cơ bản",
+    "database": "company"
+  },
+  {
+    "id": "Q09",
+    "title": "Tên nhân viên và supervisor, giữ cả người không có supervisor",
+    "sql": "SELECT e.Fname,s.Fname AS Supervisor FROM EMPLOYEE e LEFT JOIN EMPLOYEE s ON s.Ssn=e.Super_ssn ORDER BY e.Fname",
+    "expected": [
+      [
+        "Ahmad",
+        "Jennifer"
+      ],
+      [
+        "Alicia",
+        "Jennifer"
+      ],
+      [
+        "Franklin",
+        "James"
+      ],
+      [
+        "James",
+        null
+      ],
+      [
+        "Jennifer",
+        "James"
+      ],
+      [
+        "John",
+        "Franklin"
+      ],
+      [
+        "Joyce",
+        "Franklin"
+      ],
+      [
+        "Mai",
+        "Jennifer"
+      ],
+      [
+        "Ramesh",
+        "Franklin"
+      ]
+    ],
+    "explanation": "Self join dùng hai alias cho hai role của cùng entity. James được giữ nhờ LEFT JOIN.",
+    "level": "Cơ bản",
+    "database": "company"
+  },
+  {
+    "id": "Q10",
+    "title": "Nhân viên không có dependent",
+    "sql": "SELECT e.Fname FROM EMPLOYEE e WHERE NOT EXISTS(SELECT 1 FROM DEPENDENT d WHERE d.Essn=e.Ssn) ORDER BY e.Fname",
+    "expected": [
+      [
+        "Ahmad"
+      ],
+      [
+        "Alicia"
+      ],
+      [
+        "James"
+      ],
+      [
+        "Joyce"
+      ],
+      [
+        "Mai"
+      ],
+      [
+        "Ramesh"
+      ]
+    ],
+    "explanation": "Không có là không tồn tại một hàng match, không phải tồn tại một hàng không match.",
+    "level": "Cơ bản",
+    "database": "company"
+  },
+  {
+    "id": "Q11",
+    "title": "Tổng giờ đã biết của từng dự án",
+    "sql": "SELECT p.Pnumber,SUM(w.Hours) AS Total FROM PROJECT p LEFT JOIN WORKS_ON w ON w.Pno=p.Pnumber GROUP BY p.Pnumber ORDER BY p.Pnumber",
+    "expected": [
+      [
+        1,
+        52.5
+      ],
+      [
+        2,
+        37.5
+      ],
+      [
+        3,
+        50
+      ],
+      [
+        10,
+        55
+      ],
+      [
+        20,
+        25
+      ],
+      [
+        30,
+        55
+      ]
+    ],
+    "explanation": "SUM bỏ qua Hours NULL của James. Đây là tổng giờ đã biết, không khẳng định tổng thực tế đã đầy đủ.",
+    "level": "Cơ bản",
+    "database": "company"
+  },
+  {
+    "id": "Q12",
+    "title": "Nhân viên làm ít nhất 3 dự án",
+    "sql": "SELECT e.Fname,COUNT(*) AS n FROM EMPLOYEE e JOIN WORKS_ON w ON w.Essn=e.Ssn GROUP BY e.Ssn,e.Fname HAVING COUNT(*)>=3 ORDER BY e.Fname",
+    "expected": [
+      [
+        "Franklin",
+        4
+      ]
+    ],
+    "explanation": "HAVING lọc nhóm sau COUNT; PK Works_on tránh lặp cùng cặp nhân viên–dự án.",
+    "level": "Cơ bản",
+    "database": "company"
+  },
+  {
+    "id": "Q13",
+    "title": "Lương từ 25000 đến 30000, gồm hai đầu mút",
+    "sql": "SELECT Fname FROM EMPLOYEE WHERE Salary BETWEEN 25000 AND 30000 ORDER BY Fname",
+    "expected": [
+      [
+        "Ahmad"
+      ],
+      [
+        "Alicia"
+      ],
+      [
+        "John"
+      ],
+      [
+        "Joyce"
+      ]
+    ],
+    "explanation": "BETWEEN gồm cả hai đầu mút.",
+    "level": "Cơ bản",
+    "database": "company"
+  },
+  {
+    "id": "Q14",
+    "title": "Tên bắt đầu bằng J",
+    "sql": "SELECT Fname FROM EMPLOYEE WHERE Fname LIKE 'J%' ORDER BY Fname",
+    "expected": [
+      [
+        "James"
+      ],
+      [
+        "Jennifer"
+      ],
+      [
+        "John"
+      ],
+      [
+        "Joyce"
+      ]
+    ],
+    "explanation": "Phần trăm match dãy ký tự; underscore match một ký tự. Collation/case behavior phụ thuộc DBMS.",
+    "level": "Cơ bản",
+    "database": "company"
+  },
+  {
+    "id": "Q15",
+    "title": "So sánh COUNT(*) và COUNT(Salary)",
+    "sql": "SELECT COUNT(*),COUNT(Salary) FROM EMPLOYEE",
+    "expected": [
+      [
+        9,
+        8
+      ]
+    ],
+    "explanation": "COUNT(*) đếm mọi hàng, COUNT(column) chỉ đếm hàng có giá trị non-NULL.",
+    "level": "Cơ bản",
+    "database": "company"
+  },
+  {
+    "id": "Q16",
+    "title": "Nhân viên lương cao hơn trung bình phòng mình",
+    "sql": "SELECT e.Fname FROM EMPLOYEE e WHERE e.Salary>(SELECT AVG(x.Salary) FROM EMPLOYEE x WHERE x.Dno=e.Dno) ORDER BY e.Fname",
+    "expected": [
+      [
+        "Franklin"
+      ],
+      [
+        "Jennifer"
+      ],
+      [
+        "Ramesh"
+      ]
+    ],
+    "explanation": "Subquery phải tương quan qua Dno; AVG bỏ NULL, không so với trung bình toàn công ty.",
+    "level": "Trung bình",
+    "database": "company"
+  },
+  {
+    "id": "Q17",
+    "title": "Nhân viên làm ít nhất một dự án ở Houston",
+    "sql": "SELECT DISTINCT e.Fname FROM EMPLOYEE e JOIN WORKS_ON w ON w.Essn=e.Ssn JOIN PROJECT p ON p.Pnumber=w.Pno WHERE p.Plocation='Houston' ORDER BY e.Fname",
+    "expected": [
+      [
+        "Franklin"
+      ],
+      [
+        "James"
+      ],
+      [
+        "Jennifer"
+      ],
+      [
+        "Ramesh"
+      ]
+    ],
+    "explanation": "DISTINCT tránh một người xuất hiện nhiều lần nếu làm nhiều dự án ở Houston.",
+    "level": "Trung bình",
+    "database": "company"
+  },
+  {
+    "id": "Q18",
+    "title": "Nhân viên làm cả dự án 1 và 2",
+    "sql": "SELECT e.Fname FROM EMPLOYEE e WHERE EXISTS(SELECT 1 FROM WORKS_ON w WHERE w.Essn=e.Ssn AND w.Pno=1) AND EXISTS(SELECT 1 FROM WORKS_ON w WHERE w.Essn=e.Ssn AND w.Pno=2) ORDER BY e.Fname",
+    "expected": [
+      [
+        "John"
+      ],
+      [
+        "Joyce"
+      ]
+    ],
+    "explanation": "Hai EXISTS xét hai hàng có thể khác nhau. Pno=1 AND Pno=2 trên cùng hàng không thể đúng.",
+    "level": "Trung bình",
+    "database": "company"
+  },
+  {
+    "id": "Q19",
+    "title": "Nhân viên không làm bất kỳ dự án nào ở Houston",
+    "sql": "SELECT e.Fname FROM EMPLOYEE e WHERE NOT EXISTS(SELECT 1 FROM WORKS_ON w JOIN PROJECT p ON p.Pnumber=w.Pno WHERE w.Essn=e.Ssn AND p.Plocation='Houston') ORDER BY e.Fname",
+    "expected": [
+      [
+        "Ahmad"
+      ],
+      [
+        "Alicia"
+      ],
+      [
+        "John"
+      ],
+      [
+        "Joyce"
+      ],
+      [
+        "Mai"
+      ]
+    ],
+    "explanation": "Mai chưa làm dự án vẫn thỏa không có dự án ở Houston. Không thay bằng một dự án ngoài Houston.",
+    "level": "Trung bình",
+    "database": "company"
+  },
+  {
+    "id": "Q20",
+    "title": "Nhân viên chưa được phân công dự án",
+    "sql": "SELECT e.Fname FROM EMPLOYEE e WHERE NOT EXISTS(SELECT 1 FROM WORKS_ON w WHERE w.Essn=e.Ssn) ORDER BY e.Fname",
+    "expected": [
+      [
+        "Mai"
+      ]
+    ],
+    "explanation": "Anti join qua NOT EXISTS cho kết quả ổn định trước NULL ở các cột không liên quan.",
+    "level": "Trung bình",
+    "database": "company"
+  },
+  {
+    "id": "Q21",
+    "title": "Tìm nhân viên không quản lý ai bằng NOT IN chưa xử lý NULL",
+    "sql": "SELECT Fname FROM EMPLOYEE WHERE Ssn NOT IN (SELECT Super_ssn FROM EMPLOYEE) ORDER BY Fname",
+    "expected": [],
+    "explanation": "Đây là query cố ý minh họa bẫy: subquery chứa NULL của James nên NOT IN không giữ hàng nào. Không dùng làm lời giải đúng nghiệp vụ.",
+    "level": "Trung bình",
+    "database": "company"
+  },
+  {
+    "id": "Q22",
+    "title": "Sửa Q21 bằng NOT EXISTS",
+    "sql": "SELECT e.Fname FROM EMPLOYEE e WHERE NOT EXISTS(SELECT 1 FROM EMPLOYEE x WHERE x.Super_ssn=e.Ssn) ORDER BY e.Fname",
+    "expected": [
+      [
+        "Ahmad"
+      ],
+      [
+        "Alicia"
+      ],
+      [
+        "John"
+      ],
+      [
+        "Joyce"
+      ],
+      [
+        "Mai"
+      ],
+      [
+        "Ramesh"
+      ]
+    ],
+    "explanation": "Loại từng người có ít nhất một cấp dưới; không bị NULL trong Super_ssn làm nhiễu.",
+    "level": "Trung bình",
+    "database": "company"
+  },
+  {
+    "id": "Q23",
+    "title": "Tên người thuộc phòng 1 hoặc 5 bằng UNION",
+    "sql": "SELECT Fname FROM EMPLOYEE WHERE Dno=1 UNION SELECT Fname FROM EMPLOYEE WHERE Dno=5 ORDER BY Fname",
+    "expected": [
+      [
+        "Franklin"
+      ],
+      [
+        "James"
+      ],
+      [
+        "John"
+      ],
+      [
+        "Joyce"
+      ],
+      [
+        "Ramesh"
+      ]
+    ],
+    "explanation": "UNION loại dòng trùng; UNION ALL giữ bội số.",
+    "level": "Trung bình",
+    "database": "company"
+  },
+  {
+    "id": "Q24",
+    "title": "Mã nhân viên làm cả dự án 1 và 2 bằng INTERSECT",
+    "sql": "SELECT Essn FROM WORKS_ON WHERE Pno=1 INTERSECT SELECT Essn FROM WORKS_ON WHERE Pno=2 ORDER BY Essn",
+    "expected": [
+      [
+        "123456789"
+      ],
+      [
+        "453453453"
+      ]
+    ],
+    "explanation": "INTERSECT lấy giao hai tập có cùng cấu trúc.",
+    "level": "Trung bình",
+    "database": "company"
+  },
+  {
+    "id": "Q25",
+    "title": "Nhân viên làm mọi dự án trong tập {1,2}",
+    "sql": "SELECT e.Fname FROM EMPLOYEE e WHERE NOT EXISTS(SELECT 1 FROM PROJECT p WHERE p.Pnumber IN (1,2) AND NOT EXISTS(SELECT 1 FROM WORKS_ON w WHERE w.Essn=e.Ssn AND w.Pno=p.Pnumber)) ORDER BY e.Fname",
+    "expected": [
+      [
+        "John"
+      ],
+      [
+        "Joyce"
+      ]
+    ],
+    "explanation": "Không tồn tại dự án yêu cầu mà nhân viên chưa làm. Đây là mẫu for all.",
+    "level": "Nâng cao",
+    "database": "company"
+  },
+  {
+    "id": "Q26",
+    "title": "Mẫu for all khi tập dự án yêu cầu rỗng",
+    "sql": "SELECT e.Fname FROM EMPLOYEE e WHERE NOT EXISTS(SELECT 1 FROM PROJECT p WHERE p.Dnum=9 AND NOT EXISTS(SELECT 1 FROM WORKS_ON w WHERE w.Essn=e.Ssn AND w.Pno=p.Pnumber)) ORDER BY e.Fname",
+    "expected": [
+      [
+        "Ahmad"
+      ],
+      [
+        "Alicia"
+      ],
+      [
+        "Franklin"
+      ],
+      [
+        "James"
+      ],
+      [
+        "Jennifer"
+      ],
+      [
+        "John"
+      ],
+      [
+        "Joyce"
+      ],
+      [
+        "Mai"
+      ],
+      [
+        "Ramesh"
+      ]
+    ],
+    "explanation": "Tập yêu cầu rỗng không có phản ví dụ; mọi ứng viên EMPLOYEE đều thỏa.",
+    "level": "Nâng cao",
+    "database": "company"
+  },
+  {
+    "id": "Q27",
+    "title": "Mỗi phòng và nhân viên có lương >40000; giữ phòng không match",
+    "sql": "SELECT d.Dname,e.Fname FROM DEPARTMENT d LEFT JOIN EMPLOYEE e ON e.Dno=d.Dnumber AND e.Salary>40000 ORDER BY d.Dname,e.Fname",
+    "expected": [
+      [
+        "Administration",
+        "Jennifer"
+      ],
+      [
+        "Headquarters",
+        "James"
+      ],
+      [
+        "Innovation",
+        null
+      ],
+      [
+        "Research",
+        null
+      ]
+    ],
+    "explanation": "Điều kiện trong ON quyết định cặp match nhưng vẫn giữ mọi phòng.",
+    "level": "Trung bình",
+    "database": "company"
+  },
+  {
+    "id": "Q28",
+    "title": "So sánh Q27 khi điều kiện lương chuyển xuống WHERE",
+    "sql": "SELECT d.Dname,e.Fname FROM DEPARTMENT d LEFT JOIN EMPLOYEE e ON e.Dno=d.Dnumber WHERE e.Salary>40000 ORDER BY d.Dname,e.Fname",
+    "expected": [
+      [
+        "Administration",
+        "Jennifer"
+      ],
+      [
+        "Headquarters",
+        "James"
+      ]
+    ],
+    "explanation": "WHERE lọc các hàng NULL-extended; query này chỉ phù hợp nếu muốn bỏ phòng không match.",
+    "level": "Trung bình",
+    "database": "company"
+  },
+  {
+    "id": "Q29",
+    "title": "Phòng có ít nhất 4 nhân viên, bằng HAVING",
+    "sql": "SELECT Dno,COUNT(*) FROM EMPLOYEE GROUP BY Dno HAVING COUNT(*)>=4 ORDER BY Dno",
+    "expected": [
+      [
+        4,
+        4
+      ],
+      [
+        5,
+        4
+      ]
+    ],
+    "explanation": "WHERE không thể lọc trực tiếp COUNT của nhóm trước khi nhóm được tạo.",
+    "level": "Trung bình",
+    "database": "company"
+  },
+  {
+    "id": "Q30",
+    "title": "Dự án có ít nhất hai người tham gia",
+    "sql": "SELECT Pno,COUNT(*) FROM WORKS_ON GROUP BY Pno HAVING COUNT(*)>=2 ORDER BY Pno",
+    "expected": [
+      [
+        1,
+        2
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        3,
+        2
+      ],
+      [
+        10,
+        3
+      ],
+      [
+        20,
+        3
+      ],
+      [
+        30,
+        3
+      ]
+    ],
+    "explanation": "Đếm hàng phân công, kể cả hàng Hours NULL; đó là người tham gia chứ không phải số giờ.",
+    "level": "Trung bình",
+    "database": "company"
+  },
+  {
+    "id": "Q31",
+    "title": "Nhân viên có lương cao nhất trong từng phòng, giữ đồng hạng",
+    "sql": "SELECT e.Fname FROM EMPLOYEE e WHERE e.Salary=(SELECT MAX(x.Salary) FROM EMPLOYEE x WHERE x.Dno=e.Dno) ORDER BY e.Fname",
+    "expected": [
+      [
+        "Franklin"
+      ],
+      [
+        "James"
+      ],
+      [
+        "Jennifer"
+      ]
+    ],
+    "explanation": "MAX bỏ NULL. So sánh bằng MAX giữ mọi hàng đồng hạng nếu dữ liệu có tie.",
+    "level": "Nâng cao",
+    "database": "company"
+  },
+  {
+    "id": "Q32",
+    "title": "Phân loại lương: Unknown / High (>=40000) / Other",
+    "sql": "SELECT CASE WHEN Salary IS NULL THEN 'Unknown' WHEN Salary>=40000 THEN 'High' ELSE 'Other' END AS Band,COUNT(*) FROM EMPLOYEE GROUP BY CASE WHEN Salary IS NULL THEN 'Unknown' WHEN Salary>=40000 THEN 'High' ELSE 'Other' END ORDER BY Band",
+    "expected": [
+      [
+        "High",
+        3
+      ],
+      [
+        "Other",
+        5
+      ],
+      [
+        "Unknown",
+        1
+      ]
+    ],
+    "explanation": "CASE kiểm tra NULL riêng trước khi phân nhóm; không coi Unknown là Other.",
+    "level": "Trung bình",
+    "database": "company"
+  },
+  {
+    "id": "Q33",
+    "title": "Dense rank lương ở phòng 5, phần mở rộng window function",
+    "sql": "SELECT Fname,DENSE_RANK() OVER(ORDER BY Salary DESC) AS SalaryRank FROM EMPLOYEE WHERE Dno=5 ORDER BY SalaryRank,Fname",
+    "expected": [
+      [
+        "Franklin",
+        1
+      ],
+      [
+        "Ramesh",
+        2
+      ],
+      [
+        "John",
+        3
+      ],
+      [
+        "Joyce",
+        4
+      ]
+    ],
+    "explanation": "Window không gom mất từng hàng như GROUP BY; DENSE_RANK không để khoảng trống khi có tie.",
+    "level": "Nâng cao",
+    "database": "company"
+  },
+  {
+    "id": "Q34",
+    "title": "Lương và trung bình phòng bằng window, không làm mất hàng",
+    "sql": "SELECT Fname,AVG(Salary) OVER(PARTITION BY Dno) AS DeptAverage FROM EMPLOYEE WHERE Dno=5 ORDER BY Fname",
+    "expected": [
+      [
+        "Franklin",
+        33250
+      ],
+      [
+        "John",
+        33250
+      ],
+      [
+        "Joyce",
+        33250
+      ],
+      [
+        "Ramesh",
+        33250
+      ]
+    ],
+    "explanation": "PARTITION BY chia cửa sổ; WHERE Dno=5 vẫn giữ trọn phòng 5 trong ví dụ này.",
+    "level": "Nâng cao",
+    "database": "company"
+  },
+  {
+    "id": "Q35",
+    "title": "CTE tính tổng giờ đã biết rồi lọc >=40",
+    "sql": "WITH T AS(SELECT Essn,SUM(Hours) AS h FROM WORKS_ON GROUP BY Essn) SELECT e.Fname,T.h FROM EMPLOYEE e JOIN T ON T.Essn=e.Ssn WHERE T.h>=40 ORDER BY e.Fname",
+    "expected": [
+      [
+        "Ahmad",
+        40
+      ],
+      [
+        "Alicia",
+        40
+      ],
+      [
+        "Franklin",
+        40
+      ],
+      [
+        "John",
+        40
+      ],
+      [
+        "Joyce",
+        40
+      ],
+      [
+        "Ramesh",
+        40
+      ]
+    ],
+    "explanation": "CTE đặt tên cho bước trung gian; không khẳng định nó luôn được materialize.",
+    "level": "Nâng cao",
+    "database": "company"
+  },
+  {
+    "id": "Q36",
+    "title": "Nhân viên có trên 2 dependent",
+    "sql": "SELECT e.Fname,COUNT(*) FROM EMPLOYEE e JOIN DEPENDENT d ON d.Essn=e.Ssn GROUP BY e.Ssn,e.Fname HAVING COUNT(*)>2 ORDER BY e.Fname",
+    "expected": [
+      [
+        "Franklin",
+        3
+      ],
+      [
+        "John",
+        3
+      ]
+    ],
+    "explanation": "Join trước và GROUP BY đúng khóa nhân viên; không gộp những người trùng tên.",
+    "level": "Trung bình",
+    "database": "company"
+  },
+  {
+    "id": "Q37",
+    "title": "Bộ tên/địa điểm dự án của phòng 5",
+    "sql": "SELECT Pname,Plocation FROM PROJECT WHERE Dnum=5 ORDER BY Pnumber",
+    "expected": [
+      [
+        "ProductX",
+        "Bellaire"
+      ],
+      [
+        "ProductY",
+        "Sugarland"
+      ],
+      [
+        "ProductZ",
+        "Houston"
+      ]
+    ],
+    "explanation": "Projection chọn hai cột, selection lọc phòng. SQL ORDER BY có thể dùng cột không nằm SELECT trong dạng này.",
+    "level": "Cơ bản",
+    "database": "company"
+  },
+  {
+    "id": "Q38",
+    "title": "Bình quân lương đã biết toàn công ty",
+    "sql": "SELECT ROUND(AVG(Salary),2) FROM EMPLOYEE",
+    "expected": [
+      [
+        35125
+      ]
+    ],
+    "explanation": "Tổng lương 281000 chia 8 giá trị đã biết, không chia 9.",
+    "level": "Cơ bản",
+    "database": "company"
+  },
+  {
+    "id": "Q39",
+    "title": "Danh sách SSN không có WORKS_ON bằng EXCEPT",
+    "sql": "SELECT Ssn FROM EMPLOYEE EXCEPT SELECT Essn FROM WORKS_ON ORDER BY Ssn",
+    "expected": [
+      [
+        "111222333"
+      ]
+    ],
+    "explanation": "EXCEPT biểu diễn hiệu hai tập cùng một cột SSN.",
+    "level": "Trung bình",
+    "database": "company"
+  },
+  {
+    "id": "Q40",
+    "title": "Tổng số phòng và số phòng có manager",
+    "sql": "SELECT COUNT(*),COUNT(Mgr_ssn) FROM DEPARTMENT",
+    "expected": [
+      [
+        4,
+        3
+      ]
+    ],
+    "explanation": "COUNT(column) bỏ NULL; Innovation có manager chưa được gán. Đây là giả thiết fixture, không phải yêu cầu COMPANY chính thức.",
+    "level": "Cơ bản",
+    "database": "company"
+  }
+]

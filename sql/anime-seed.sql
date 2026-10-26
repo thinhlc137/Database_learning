@@ -1,0 +1,14 @@
+BEGIN;
+INSERT INTO account VALUES (1,'an','an@example.test'),(2,'binh','binh@example.test'),(3,'chi','chi@example.test');
+INSERT INTO viewer VALUES(1),(2),(3);
+INSERT INTO content_admin VALUES(3,'Content');
+INSERT INTO anime VALUES(1,'Sky Academy',2024),(2,'Quiet Garden',2025),(3,'Orbit City',2026),(4,'Paper Moon',2023);
+INSERT INTO genre VALUES(1,'Action'),(2,'Slice of life'),(3,'Sci-Fi');
+INSERT INTO anime_genre VALUES(1,1),(1,3),(2,2),(3,1),(3,3),(4,2);
+INSERT INTO studio VALUES(1,'North Studio'),(2,'River Works');
+INSERT INTO produced_by VALUES(1,1),(1,2),(2,2),(3,1),(4,2);
+INSERT INTO episode VALUES(1,1,'Arrival',1440),(1,2,'First test',1440),(2,1,'Seeds',1320),(3,1,'Launch',1500),(4,1,'Letter',1200);
+INSERT INTO watch_list VALUES(1,1,'Weekend'),(2,2,'Favorites');
+INSERT INTO contains VALUES(1,1,'2026-10-01'),(1,2,'2026-10-02'),(2,1,'2026-10-03'),(2,3,'2026-10-04');
+INSERT INTO rating VALUES(1,1,9),(2,1,8),(3,1,10),(1,2,8),(2,3,9);
+COMMIT;
