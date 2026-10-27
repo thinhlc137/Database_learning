@@ -35,7 +35,7 @@ Sau đó mở `http://127.0.0.1:8000`. Không cần localhost nếu mở trực 
 | Trình đọc | 164 phần nguồn, 18 trang hướng dẫn/lab; tìm kiếm không dấu, mục lục, tiến độ, in từng bài |
 | 8 hướng dẫn nền tảng | Motivation, ví dụ, bảng so sánh, bài tập và lời giải |
 | Sơ đồ | 9 SVG biên soạn mới + Mermaid trong tài liệu gốc |
-| SQL Playground | SQLite chạy thật trong RAM của trình duyệt; sửa query, đổi fixture, reset dữ liệu |
+| SQL Playground | SQLite chạy thật; xem trực tiếp bảng, cấu trúc PK/FK, lọc/phân trang; dữ liệu tự cập nhật sau SQL |
 | SQL exercises | 40 đề, query lời giải, expected rows và giải thích |
 | Bộ câu hỏi | 50 câu có phản hồi, giải thích, bộ lọc và tiến độ cá nhân |
 | FD tools | Bao đóng từng bước, mọi candidate key; CLI có minimal cover |
@@ -81,6 +81,18 @@ python tools/index_demo.py
 ```
 
 Bắt đầu từ [Lab 01](labs/01-setup.md). CLI tạo database mới mỗi lần; SQL Playground giữ state trong tab đến khi reset/reload. Thay đổi dữ liệu không được lưu thành file database. Tiến độ đọc và quiz lưu bằng localStorage của trình duyệt, không đồng bộ giữa máy.
+
+## Xem database ngay cạnh ô SQL
+
+Trong **Xưởng tương tác → SQL chạy thật**, phần **Khám phá database** đọc trực tiếp từ cùng database đang dùng cho ô SQL:
+
+1. Chọn COMPANY hoặc ANIME, rồi bấm tên bảng để xem các hàng dữ liệu.
+2. Nhãn **PK/FK** đánh dấu khóa chính/khóa ngoại; mở **Cấu trúc & khóa** để xem cột, liên kết và SQL tạo bảng. Bấm liên kết FK để mở bảng cha.
+3. Dùng ô tìm kiếm và nút trang trước/tiếp (25 hàng/trang). **Nạp SELECT \*** chỉ điền truy vấn vào editor; bạn vẫn quyết định khi chạy.
+4. Chạy INSERT/UPDATE/DELETE hoặc CREATE/ALTER/DROP: bảng và danh sách bảng tự làm mới. Nếu một script lỗi giữa chừng, trình xem vẫn phản ánh các thay đổi đã xảy ra; nó không tự commit hoặc rollback.
+5. Bấm **Reset dữ liệu** để trở về mẫu ban đầu. Cả SQL và trình xem đều chạy offline trong RAM của tab.
+
+Để cập nhật bản đã tải ZIP trước đây, tải ZIP mới từ repo và giải nén vào một thư mục mới, rồi mở `docs/index.html`.
 
 ## Phân biệt phần học và phần chạy được
 
