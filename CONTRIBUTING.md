@@ -25,3 +25,9 @@ npm run test:browser
 ```
 
 Browser suite mở trực tiếp file index.html và kiểm nội dung/SQL/quiz/công cụ/di động. Việc dùng project không cần các dependency này.
+
+## Khóa SQL theo slide
+
+Sửa bài trong lessons/sql/; giữ id/sql marker `-- @lab Sxx` ổn định. Mã runnable chỉ viết một lần trong Markdown, builder trích vào app/CLI. Expected rows ở sql/course-expectations.json phải được xác định độc lập; không chụp output hiện tại rồi coi đó là chứng minh đúng. Chạy `python tools/sql_course.py --check` và `python tools/check.py`.
+
+course.json xác định thứ tự 18 bài. materials/sql-slides-manifest.json ánh xạ mọi slide của hai PPTX. Khi thêm nội dung, cập nhật nguồn/đích có chủ ý và giữ 9 Markdown gốc nguyên vẹn. Script SQL Server thuộc dialect riêng, chưa được thực thi trong CI SQLite; không đưa chúng vào runner SQLite.

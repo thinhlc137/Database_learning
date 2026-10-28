@@ -20,4 +20,5 @@ jobs:
       - run: python tools/check.py
       - run: node --check docs/app.js
       - run: node --check docs/database-browser.js
+      - run: node --check docs/sql-course.js
       - run: git diff --exit-code -- docs/content.js docs/coverage.json docs/assets/

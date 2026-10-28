@@ -52,14 +52,27 @@ def main():
         content=(ROOT/file).read_text(encoding='utf-8')
         title=re.sub(r'^#\s*','',content.splitlines()[0])
         pages.append(dict(id=id,group=group,kind='guide',title=title,markdown=content,file=file))
+    course=json.loads((ROOT/'lessons/sql/course.json').read_text(encoding='utf-8'))
+    for module in course:
+        pages.append(dict(**module,group='c6',kind='guide',course=True,
+                          markdown=(ROOT/module['file']).read_text(encoding='utf-8')))
+    setup='sql/sqlserver/README.md'
+    pages.append(dict(id='sql-server-setup',group='c6',kind='guide',title='Thực hành SQL Server trên máy của bạn',
+                      file=setup,markdown=(ROOT/setup).read_text(encoding='utf-8')))
+    from sql_course import course_examples
     manifest=json.loads((ROOT/'materials/manifest.json').read_text(encoding='utf-8'))
     for m in manifest:
         assert hashlib.sha256((ROOT/'materials'/m['file']).read_bytes()).hexdigest()==m['sha256'],'Original source changed'
     fixtures={name: '\n'.join((ROOT/'sql'/f'{name}-{part}.sql').read_text(encoding='utf-8') for part in ['schema','seed']) for name in ['company','anime']}
-    bundle={'fixtures':fixtures,'pages':pages,'groups':groups,'manifest':manifest,'quiz':json.loads((ROOT/'docs/quiz.json').read_text(encoding='utf-8')),'sql':json.loads((ROOT/'sql/exercises.json').read_text(encoding='utf-8'))}
+    bundle={'fixtures':fixtures,'pages':pages,'groups':groups,'manifest':manifest,'quiz':json.loads((ROOT/'docs/quiz.json').read_text(encoding='utf-8')),'sql':json.loads((ROOT/'sql/exercises.json').read_text(encoding='utf-8')),
+            'sqlCourse':course,'sqlCourseExamples':course_examples(),
+            'downloads':[str(f.relative_to(ROOT)) for f in sorted((ROOT/'sql/sqlserver').glob('*.sql'))]+['materials/sql-slides-manifest.json']}
     (ROOT/'docs/content.js').write_text('window.DB_CONTENT = '+json.dumps(bundle,ensure_ascii=False,separators=(',',':'))+';\n',encoding='utf-8')
     # Machine-readable coverage: every imported H2 section is reachable in the reader.
-    coverage={'sources':len(manifest),'source_lines':sum(x['lines'] for x in manifest),'source_characters':sum(x['characters'] for x in manifest),'source_sections':sum(x['kind']=='source' for x in pages),'learning_pages':sum(x['kind']=='guide' for x in pages),'quiz_questions':len(bundle['quiz']),'sql_exercises':len(bundle['sql']),'pages':[{'id':p['id'],'file':p['file'],'title':p['title']} for p in pages]}
+    slides=json.loads((ROOT/'materials/sql-slides-manifest.json').read_text(encoding='utf-8'))
+    coverage={'sources':len(manifest),'source_lines':sum(x['lines'] for x in manifest),'source_characters':sum(x['characters'] for x in manifest),'source_sections':sum(x['kind']=='source' for x in pages),'learning_pages':sum(x['kind']=='guide' for x in pages),'quiz_questions':len(bundle['quiz']),'sql_exercises':len(bundle['sql']),
+              'sql_course_lessons':len(course),'sql_course_examples':len(bundle['sqlCourseExamples']),'sql_slide_sources':len(slides),'sql_slides_mapped':sum(d['slide_count'] for d in slides),
+              'pages':[{'id':p['id'],'file':p['file'],'title':p['title']} for p in pages]}
     (ROOT/'docs/coverage.json').write_text(json.dumps(coverage,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
     print({k:v for k,v in coverage.items() if k!='pages'})
 if __name__=='__main__':main()

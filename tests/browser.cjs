@@ -16,6 +16,7 @@ async function go(page,id){await page.evaluate(id=>{location.hash=id;},id);await
   console.log('Read all',pages.length,'pages; diagram fallbacks:',JSON.stringify(render));
   assert.deepEqual(render,[],'Source diagrams must render');
   await go(page,'guide-5');assert((await page.locator('.katex').count())>0,'Math must render');
+  await require('./sql-course.cjs')(page,go);
   await go(page,'guide-1');await page.locator('#mark-done').click();assert.match(await page.locator('#progress-text').innerText(),/1 \/ 8/);await page.reload();assert.match(await page.locator('#progress-text').innerText(),/1 \/ 8/);
   await page.locator('#search-open').click();await page.locator('#search-input').fill('phu thuoc ham');await page.waitForSelector('.search-result');assert((await page.locator('.search-result').count())>0);await page.locator('#search-close').click();
   await go(page,'workshop');await page.waitForFunction(()=>document.querySelector('#sql-run')?.textContent==='Chạy SQL →');
@@ -29,6 +30,6 @@ async function go(page,id){await page.evaluate(id=>{location.hash=id;},id);await
   await go(page,'quiz');const answer=await page.evaluate(()=>DB_CONTENT.quiz[0].answer);await page.locator(`[data-option="${answer}"]`).click();await page.locator('#quiz-check').click();assert.match(await page.locator('#quiz-feedback').innerText(),/Đúng/);await page.reload();assert.match(await page.locator('#quiz-feedback').innerText(),/Đúng/);await page.locator('#quiz-filter').selectOption('security');assert.equal(await page.locator('.quiz-map button').count(),3);
   await go(page,'home');await page.setViewportSize({width:390,height:844});assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false);await page.locator('#menu').click();assert.equal(await page.locator('#menu').getAttribute('aria-expanded'),'true');await page.locator('#chapters a').first().click();await page.waitForSelector('.article');assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false);await go(page,'workshop');await page.locator('[data-tool="fd"]').click();assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false);
   assert.deepEqual(network,[],'Offline app must not request external resources');assert.deepEqual(errors,[],'No uncaught browser errors');
-  console.log('PASS: 182 reading pages, 40 real SQL queries, math, diagrams, search, progress, quiz, tools, and mobile — fully offline.');
+  console.log('PASS:',pages.length,'reading pages, 40 practice queries + 43 lesson examples, math, diagrams, search, progress, quiz, tools, and mobile — fully offline.');
  }finally{await browser.close();}
 })().catch(e=>{console.error(e);process.exitCode=1;});

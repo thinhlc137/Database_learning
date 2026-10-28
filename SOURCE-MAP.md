@@ -14,6 +14,18 @@ Các file gốc được nhập đủ; bảng này dùng cùng manifest và docs
 | [DB-Chapter8.md](materials/DB-Chapter8.md) | [lessons/08-storage.md](lessons/08-storage.md) | 13 | tools/storage.py, index_demo.py |
 | [DB-Final.md](materials/DB-Final.md) | [lessons/10-exam-roadmap.md](lessons/10-exam-roadmap.md) | 24 | 50 MCQ, security/advanced, đề tự luận |
 
+## Hai PowerPoint SQL bổ sung ngày 28/10/2026
+
+| Nguồn | Số slide | Đích học |
+|---|---:|---|
+| 4A_SQL.pptx | 107 | SQL 01–10, SQL 14 và đối chiếu SQL 18 |
+| 4B_AdvancedSQL.pptx | 50 | SQL 11–16 và đối chiếu SQL 18 |
+
+- [Mục lục 18 bài](lessons/06-sql.md), [bảng từng slide và hiệu đính](lessons/sql/18-slide-map-and-references.md).
+- [Manifest slide](materials/sql-slides-manifest.json): SHA-256 và đích học của từng trang, gồm ảnh code/bảng và trang mục lục/kết thúc.
+- Các PPTX được dùng làm nguồn biên soạn, không đóng gói bản nhị phân vào repository. 9 Markdown ban đầu vẫn giữ nguyên.
+- 43 ví dụ SQLite trích từ bài, expected riêng ở sql/course-expectations.json; bộ T-SQL và phạm vi chưa thực thi được ghi ở sql/sqlserver/README.md.
+
 ## Chính sách hiệu đính
 
-Bản nguồn không sửa. Reader chỉ sửa lỗi tiêu đề D# của Chương 1 khi hiển thị; chú giải được viết riêng. Hàm build kiểm tổng nhập và SHA-256. Không suy rằng slide/quiz được dẫn trong nguồn cũng đã được cung cấp.
+Bản nguồn không sửa. Reader chỉ sửa lỗi tiêu đề D# của Chương 1 khi hiển thị; chú giải được viết riêng. Hàm build kiểm tổng nhập và SHA-256. Chỉ hai PPTX 4A/4B bổ sung đã được đối chiếu; không suy những PDF/quiz khác được dẫn tên trong nguồn cũng đã được cung cấp.

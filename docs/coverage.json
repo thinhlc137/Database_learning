@@ -3,9 +3,13 @@
   "source_lines": 18148,
   "source_characters": 833811,
   "source_sections": 164,
-  "learning_pages": 18,
+  "learning_pages": 37,
   "quiz_questions": 50,
   "sql_exercises": 40,
+  "sql_course_lessons": 18,
+  "sql_course_examples": 43,
+  "sql_slide_sources": 2,
+  "sql_slides_mapped": 157,
   "pages": [
     {
       "id": "c1-00",
@@ -916,6 +920,101 @@
       "id": "lab-7",
       "file": "labs/07-mock-exam.md",
       "title": "50 câu tự luyện có giải thích"
+    },
+    {
+      "id": "sql-01",
+      "file": "lessons/sql/01-language-data-types.md",
+      "title": "SQL 01 · Ngôn ngữ SQL, kiểu dữ liệu và database COMPANY"
+    },
+    {
+      "id": "sql-02",
+      "file": "lessons/sql/02-ddl-constraints.md",
+      "title": "SQL 02 · CREATE, ALTER, DROP và toàn vẹn dữ liệu"
+    },
+    {
+      "id": "sql-03",
+      "file": "lessons/sql/03-select-expressions-sets.md",
+      "title": "SQL 03 · SELECT, biểu thức, lọc, sắp xếp và phép tập hợp"
+    },
+    {
+      "id": "sql-04",
+      "file": "lessons/sql/04-joins.md",
+      "title": "SQL 04 · JOIN qua các bảng trung gian"
+    },
+    {
+      "id": "sql-05",
+      "file": "lessons/sql/05-null-logic.md",
+      "title": "SQL 05 · NULL và logic ba giá trị"
+    },
+    {
+      "id": "sql-06",
+      "file": "lessons/sql/06-aggregation.md",
+      "title": "SQL 06 · COUNT, SUM, AVG, GROUP BY và HAVING"
+    },
+    {
+      "id": "sql-07",
+      "file": "lessons/sql/07-subqueries-quantifiers.md",
+      "title": "SQL 07 · Truy vấn lồng, IN, EXISTS, ANY, ALL và phép chia"
+    },
+    {
+      "id": "sql-08",
+      "file": "lessons/sql/08-dml-transactions.md",
+      "title": "SQL 08 · INSERT, UPDATE, DELETE và giao dịch"
+    },
+    {
+      "id": "sql-09",
+      "file": "lessons/sql/09-views-assertions.md",
+      "title": "SQL 09 · View, inline view và assertion"
+    },
+    {
+      "id": "sql-10",
+      "file": "lessons/sql/10-permissions.md",
+      "title": "SQL 10 · GRANT, REVOKE và đường truyền quyền"
+    },
+    {
+      "id": "sql-11",
+      "file": "lessons/sql/11-tsql-programming.md",
+      "title": "SQL 11 · T-SQL: biến, batch, IF, WHILE, BREAK và CONTINUE"
+    },
+    {
+      "id": "sql-12",
+      "file": "lessons/sql/12-procedures.md",
+      "title": "SQL 12 · Stored procedure: tham số, OUTPUT và mã trạng thái"
+    },
+    {
+      "id": "sql-13",
+      "file": "lessons/sql/13-functions.md",
+      "title": "SQL 13 · Scalar function và table-valued function"
+    },
+    {
+      "id": "sql-14",
+      "file": "lessons/sql/14-triggers.md",
+      "title": "SQL 14 · Trigger, inserted/deleted và xử lý nhiều dòng"
+    },
+    {
+      "id": "sql-15",
+      "file": "lessons/sql/15-cursors.md",
+      "title": "SQL 15 · Cursor: vòng đời và cách xử lý từng hàng"
+    },
+    {
+      "id": "sql-16",
+      "file": "lessons/sql/16-error-handling.md",
+      "title": "SQL 16 · THROW, RAISERROR, TRY...CATCH và rollback"
+    },
+    {
+      "id": "sql-17",
+      "file": "lessons/sql/17-practice-exam.md",
+      "title": "SQL 17 · Bài tập tổng hợp và cách chấm lời giải"
+    },
+    {
+      "id": "sql-18",
+      "file": "lessons/sql/18-slide-map-and-references.md",
+      "title": "SQL 18 · Đối chiếu từng slide, hiệu đính và nguồn tham khảo"
+    },
+    {
+      "id": "sql-server-setup",
+      "file": "sql/sqlserver/README.md",
+      "title": "Thực hành SQL Server trên máy của bạn"
     }
   ]
 }

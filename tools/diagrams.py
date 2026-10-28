@@ -98,4 +98,7 @@ def main():
  a.box(580,400,460,125,'Ưu tiên availability',['Tiếp tục trả lời theo trạng thái cục bộ.','Có thể không giữ được C trong partition.'],BLUE)
  a.save('cap.svg')
  print('Generated 9 SVG teaching diagrams')
-if __name__=='__main__':main()
+if __name__=='__main__':
+ main()
+ from sql_diagrams import main as sql_diagrams
+ sql_diagrams()

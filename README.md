@@ -2,7 +2,7 @@
 
 **Học Database bằng tiếng Việt: hiểu bản chất, nhìn ví dụ, chạy SQL và tự giải bài.**
 
-Một project học tập dựa trên **9 file Markdown CO2013** do người dùng cung cấp, kết hợp bài đọc đầy đủ với hướng dẫn mới, sơ đồ, lab và công cụ tương tác. Phù hợp để tự học, ôn cuối kỳ và luyện thiết kế CSDL cho dự án.
+Một project học tập dựa trên **9 file Markdown CO2013** và **hai PowerPoint SQL 4A/4B** do người dùng cung cấp, kết hợp bài đọc đầy đủ với hướng dẫn, sơ đồ, lab và công cụ tương tác. Phù hợp để tự học, ôn cuối kỳ và luyện thiết kế CSDL cho dự án.
 
 ![Database Learning Lab — học bằng sơ đồ](docs/assets/schema.svg)
 
@@ -32,16 +32,18 @@ Sau đó mở `http://127.0.0.1:8000`. Không cần localhost nếu mở trực 
 | Thành phần | Nội dung |
 |---|---|
 | 9 tài liệu gốc | **18.148 dòng**, giữ nguyên từng byte trong `materials/` |
-| Trình đọc | 164 phần nguồn, 18 trang hướng dẫn/lab; tìm kiếm không dấu, mục lục, tiến độ, in từng bài |
+| Trình đọc | 164 phần nguồn, 37 trang hướng dẫn/lab; tìm kiếm không dấu, mục lục, tiến độ, in từng bài |
 | 8 hướng dẫn nền tảng | Motivation, ví dụ, bảng so sánh, bài tập và lời giải |
-| Sơ đồ | 9 SVG biên soạn mới + Mermaid trong tài liệu gốc |
+| Sơ đồ | 14 SVG biên soạn mới + Mermaid; COMPANY, JOIN, NULL, grouping, trigger nhiều dòng |
 | SQL Playground | SQLite chạy thật; xem trực tiếp bảng, cấu trúc PK/FK, lọc/phân trang; dữ liệu tự cập nhật sau SQL |
+| Khóa SQL chi tiết | **18 bài theo 157 slide**, 43 ví dụ sửa/chạy ngay trong bài, 20 bài tổng hợp có lời giải |
+| SQL Server | 9 script: setup, biến, procedure, function, trigger, cursor, lỗi, self-check và phân quyền |
 | SQL exercises | 40 đề, query lời giải, expected rows và giải thích |
 | Bộ câu hỏi | 50 câu có phản hồi, giải thích, bộ lọc và tiến độ cá nhân |
 | FD tools | Bao đóng từng bước, mọi candidate key; CLI có minimal cover |
 | Storage tools | bfr, số block, các mức sparse index, chi phí truy cập theo giả thiết |
 | Hai fixture | COMPANY và Anime Streaming capstone |
-| Kiểm tra | 27 Python test methods, gồm 40 SQL cases và các invariant quan trọng |
+| Kiểm tra | 31 Python test methods; 40 bài Q + 43 ví dụ S có expected độc lập; browser kiểm offline |
 
 ## Lộ trình nội dung
 
@@ -59,6 +61,21 @@ Sau đó mở `http://127.0.0.1:8000`. Không cần localhost nếu mở trực 
 | Ôn cuối kỳ | [Lộ trình + tự luận mẫu](lessons/10-exam-roadmap.md) | [50 câu có lời giải](labs/07-mock-exam.md) |
 
 Trong trình đọc, mỗi chương mở bằng hướng dẫn bổ sung; cuối hướng dẫn có toàn bộ mục lục các phần nguồn. Đọc Markdown trực tiếp trên GitHub vẫn được: [danh mục tài liệu](INDEX.md).
+
+## Học SQL theo hai bộ slide mới
+
+Mở **docs/index.html → SQL chi tiết · 18 bài mới** hoặc chọn Chương 6. Trên GitHub, bắt đầu ở **[mục lục SQL](lessons/06-sql.md)**.
+
+- Bài 01–08: kiểu dữ liệu, DDL/constraint, SELECT, JOIN, NULL, GROUP BY/HAVING, query con/ANY/ALL, DML/transaction.
+- Bài 09–16: view/assertion, quyền, biến/batch/vòng lặp, procedure, scalar/TVF, trigger nhiều dòng, cursor và xử lý lỗi.
+- Bài 17: 20 bài tổng hợp với lời giải và phản ví dụ. Bài 18: đối chiếu từng trang của 157 slide cùng hiệu đính.
+- Nút **Chạy ví dụ** chạy SQLite thật ngay dưới mã. **Sửa SQL để thử** mở editor; mỗi lần chạy tạo COMPANY mới, độc lập Playground. Có bảng kết quả và báo khớp mẫu.
+- Code **SQL Server · T-SQL** cần SQL Server riêng: xem [hướng dẫn và 9 script](sql/sqlserver/README.md). Project chưa thực thi T-SQL trong CI; không giả lập procedure/cursor bằng SQLite.
+
+```bash
+python tools/sql_course.py --example S23
+python tools/sql_course.py --check
+```
 
 ## Chạy các lab
 
@@ -97,17 +114,17 @@ Trong **Xưởng tương tác → SQL chạy thật**, phần **Khám phá datab
 ## Phân biệt phần học và phần chạy được
 
 - Bài gốc có SQL chuẩn và ví dụ của nhiều DBMS; không phải mọi code block đều chạy trên SQLite.
-- `sql/company-*.sql`, `sql/anime-*.sql`, 40 lời giải SQL và các script `tools/` là phần thực hành SQLite được kiểm thử.
-- `WITH CHECK OPTION`, GRANT/REVOKE, stored procedures, T-SQL triggers và ANY/ALL được đọc theo dialect tương ứng.
+- `sql/company-*.sql`, `sql/anime-*.sql`, 40 lời giải SQL, 43 ví dụ S và các script Python là phần SQLite được kiểm thử; `sql/sqlserver/` dùng engine riêng.
+- `WITH CHECK OPTION`, GRANT/REVOKE, procedure/function/cursor/T-SQL trigger/THROW dùng SQL Server trong phần mới; ASSERTION/domain chuẩn được giải thích kèm giới hạn hỗ trợ.
 - Trọng số/hình thức thi trong DB-Final phản ánh ghi chú người dùng cung cấp; project không có thông báo gốc để xác nhận cho kỳ hiện tại.
-- Một số điểm dễ nhầm đã có **[chú giải & nguồn chính thức](lessons/11-corrections-and-sources.md)**. Các PDF/quiz được dẫn tên trong tài liệu không nằm trong bộ upload.
+- Một số điểm dễ nhầm đã có **[chú giải & nguồn chính thức](lessons/11-corrections-and-sources.md)**. Hai PPTX 4A/4B đã được đối chiếu; các PDF/quiz khác được dẫn tên trong tài liệu chưa được cung cấp.
 
 ## Cấu trúc project
 
 | Thư mục | Vai trò |
 |---|---|
 | `materials/` | 9 nguồn nguyên bản và manifest SHA-256 |
-| `lessons/` | Hướng dẫn bổ sung, lộ trình, chú giải |
+| `lessons/` | Hướng dẫn; `lessons/sql/` chứa khóa SQL chi tiết và mục lục course.json |
 | `labs/` | Bài tập, thực nghiệm và capstone |
 | `sql/` | Schema, seed, đề, lời giải và expected outputs |
 | `tools/` | Build, lab runner, thuật toán và demo Python |

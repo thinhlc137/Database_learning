@@ -8,6 +8,12 @@ Hướng dẫn mới ở `lessons/`, lab, fixture và đề tự luyện là ph�
 
 Trình đọc còn xuống dòng các attribute trong Mermaid ER viết gộp bằng dấu chấm phẩy để tương thích renderer; không đổi file nguồn. Mermaid ER dùng Crow's Foot, không phải ký hiệu Chen. Khi học cardinality/participation, ưu tiên câu nghiệp vụ và chú giải của từng hệ ký hiệu.
 
+## Bổ sung nguồn SQL 28/10/2026
+
+Đã nhận và đối chiếu **4A_SQL.pptx (107 slide)** và **4B_AdvancedSQL.pptx (50 slide)**. Khóa [SQL chi tiết](06-sql.md) giải thích các chủ đề của hai bộ, kể cả code nằm trong ảnh. [Bảng 157 slide](sql/18-slide-map-and-references.md) liệt kê từng trang, đích học và hiệu đính T-SQL. Nhận định phía trên về file chưa được cung cấp áp dụng cho các PDF/quiz khác được dẫn tên, không áp dụng hai PPTX này.
+
+Ví dụ S01–S43 thực thi trên SQLite. Bộ SQL Server có script setup/routine và self-check để người học chạy trên engine riêng; chưa được chạy trong CI hiện tại. Xem [hướng dẫn môi trường](../sql/sqlserver/README.md).
+
 ## Những điểm cần đọc cùng chú giải
 
 | Vị trí hoặc cách ghi trong nguồn | Cách hiểu chính xác hơn |

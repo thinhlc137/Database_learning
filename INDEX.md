@@ -16,6 +16,28 @@ Trình đọc: mở docs/index.html. Dưới đây là đường dẫn Markdown 
 - [Ôn cuối kỳ: học chủ động, có sản phẩm sau mỗi buổi](lessons/10-exam-roadmap.md)
 - [Ghi chú biên tập và nguồn đối chiếu](lessons/11-corrections-and-sources.md)
 
+## SQL chi tiết · 4A và 4B
+
+- [SQL 01 · Ngôn ngữ SQL, kiểu dữ liệu và database COMPANY](lessons/sql/01-language-data-types.md)
+- [SQL 02 · CREATE, ALTER, DROP và toàn vẹn dữ liệu](lessons/sql/02-ddl-constraints.md)
+- [SQL 03 · SELECT, biểu thức, lọc, sắp xếp và phép tập hợp](lessons/sql/03-select-expressions-sets.md)
+- [SQL 04 · JOIN qua các bảng trung gian](lessons/sql/04-joins.md)
+- [SQL 05 · NULL và logic ba giá trị](lessons/sql/05-null-logic.md)
+- [SQL 06 · COUNT, SUM, AVG, GROUP BY và HAVING](lessons/sql/06-aggregation.md)
+- [SQL 07 · Truy vấn lồng, IN, EXISTS, ANY, ALL và phép chia](lessons/sql/07-subqueries-quantifiers.md)
+- [SQL 08 · INSERT, UPDATE, DELETE và giao dịch](lessons/sql/08-dml-transactions.md)
+- [SQL 09 · View, inline view và assertion](lessons/sql/09-views-assertions.md)
+- [SQL 10 · GRANT, REVOKE và đường truyền quyền](lessons/sql/10-permissions.md)
+- [SQL 11 · T-SQL: biến, batch, IF, WHILE, BREAK và CONTINUE](lessons/sql/11-tsql-programming.md)
+- [SQL 12 · Stored procedure: tham số, OUTPUT và mã trạng thái](lessons/sql/12-procedures.md)
+- [SQL 13 · Scalar function và table-valued function](lessons/sql/13-functions.md)
+- [SQL 14 · Trigger, inserted/deleted và xử lý nhiều dòng](lessons/sql/14-triggers.md)
+- [SQL 15 · Cursor: vòng đời và cách xử lý từng hàng](lessons/sql/15-cursors.md)
+- [SQL 16 · THROW, RAISERROR, TRY...CATCH và rollback](lessons/sql/16-error-handling.md)
+- [SQL 17 · Bài tập tổng hợp và cách chấm lời giải](lessons/sql/17-practice-exam.md)
+- [SQL 18 · Đối chiếu từng slide, hiệu đính và nguồn tham khảo](lessons/sql/18-slide-map-and-references.md)
+- [SQL Server: hướng dẫn và 9 script](sql/sqlserver/README.md)
+
 ## labs
 
 - [Lab 01 · Khởi động và kiểm tra ràng buộc](labs/01-setup.md)
@@ -49,3 +71,11 @@ Trình đọc: mở docs/index.html. Dưới đây là đường dẫn Markdown 
 - [schema](docs/assets/schema.svg)
 - [specialization](docs/assets/specialization.svg)
 - [sql-pipeline](docs/assets/sql-pipeline.svg)
+
+## Sơ đồ SQL bổ sung
+
+- [sql-company](docs/assets/sql-company.svg)
+- [sql-joins](docs/assets/sql-joins.svg)
+- [sql-null](docs/assets/sql-null.svg)
+- [sql-groups](docs/assets/sql-groups.svg)
+- [sql-trigger-rows](docs/assets/sql-trigger-rows.svg)
